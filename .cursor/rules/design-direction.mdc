@@ -1,10 +1,10 @@
 ---
-description: Dirección visual global ImportaFlow
+description: Global visual direction for ImportaFlow
 alwaysApply: true
 ---
 
-# Dirección de diseño
+# Design direction
 
-- La web debe transmitir la sensación de **Apple + Stripe + Linear**: minimal, premium y pulida.
-- Estética: **minimal**, **premium**, **gradientes oscuros**, **cards con bordes redondeados**, **tipografía grande** y jerarquía clara.
-- No generes diseño de **agencia de marketing genérica** (ilustraciones stock baratas, layouts saturados, “startup template” sin personalidad).
+- The site should feel like **Apple + Stripe + Linear**: minimal, premium, and polished.
+- Aesthetic: **minimal**, **premium**, **dark gradients**, **rounded cards**, **large type**, and clear hierarchy.
+- Do not produce **generic marketing-agency** design (cheap stock illustrations, busy layouts, personality-free “startup templates”).

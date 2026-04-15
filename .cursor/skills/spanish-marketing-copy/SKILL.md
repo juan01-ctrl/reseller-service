@@ -1,37 +1,41 @@
 ---
 name: spanish-marketing-copy
-description: Genera copy conciso y premium en español argentino para landing SaaS ImportaFlow (headlines, beneficios, CTAs).
+description: Generate concise, premium copy in Argentine Spanish for the ImportaFlow SaaS landing (headlines, benefits, CTAs).
 ---
 
-# Copy de marketing en español (ImportaFlow)
+# Marketing copy in Spanish (ImportaFlow)
 
-## Cuándo usarlo
+## When to use
 
-- Cuando haya que redactar o mejorar textos de la landing (hero, secciones, pricing, CTAs, microcopy).
-- Cuando necesites mensajes alineados a **web profesional** y **asistente con IA para WhatsApp y la web**, sin tono genérico.
+- When writing or improving landing copy (hero, sections, pricing, CTAs, microcopy).
+- When you need messaging aligned with a **professional site** and **AI assistant for WhatsApp and the web**, without a generic tone.
 
-## Instrucciones
+The **output language** is **Spanish** (Rioplatense, Argentina), per project rules. This skill’s instructions are in English for maintainers; generated copy stays in Spanish.
 
-- Usá **titulares cortos**; que se lean en un vistazo.
-- Enfocate en **dolores reales** del importador y en **resultados medibles** (más ventas, menos fricción, menos tiempo perdido).
-- Soná **premium, directo y moderno**; evitá relleno y adjetivos vacíos.
-- Evitá clichés y frases hechas de marketing genérico (“soluciones innovadoras”, “líderes del mercado”, etc.).
-- Preferí formulaciones concretas como:
-  - “Más ventas”
-  - “Menos tiempo respondiendo”
-  - “Atención 24/7”
-  - “Tu negocio ya tiene demanda”
-- Mantené **español argentino natural** (vos, tono cercano pero profesional).
-- No mezcles inglés salvo nombres de producto/framework cuando aplique.
+## Instructions
 
-## Ejemplos
+- Use **short headlines**; they should read in one glance.
+- Focus on **real importer pain** and **measurable outcomes** (more sales, less friction, less wasted time).
+- Sound **premium, direct, and modern**; avoid filler and empty adjectives.
+- Avoid generic marketing clichés (“innovative solutions”, “market leaders”, etc.).
+- Prefer concrete phrasing such as:
+  - “More sales”
+  - “Less time replying”
+  - “24/7 attention”
+  - “Demand is already there for your business”
+- Keep **natural Argentine Spanish** (*vos*, warm but professional).
+- Do not mix in English except product/framework names when needed.
 
-**Hero (titular + subtítulo):**
+## Examples
+
+(Output must be **Spanish**; samples below match project rules.)
+
+**Hero (headline + subtitle):**
 
 - Titular: “Convertí consultas en ventas, incluso cuando no estás.”
 - Subtítulo: “Web profesional + asistente con IA para WhatsApp. Menos tiempo respondiendo, más reservas.”
 
-**Beneficio (bloque corto):**
+**Benefit (short block):**
 
 - “Atención 24/7 sin sumar gente: el asistente responde stock, colores y cuotas al instante.”
 

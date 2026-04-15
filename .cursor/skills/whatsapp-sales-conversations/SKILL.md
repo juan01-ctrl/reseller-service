@@ -1,46 +1,48 @@
 ---
 name: whatsapp-sales-conversations
-description: Genera conversaciones de WhatsApp realistas (comprador vs asistente IA) para importadores Apple en Argentina.
+description: Generate realistic WhatsApp conversations (buyer vs AI assistant) for Apple importers in Argentina.
 ---
 
-# Conversaciones de venta por WhatsApp
+# WhatsApp sales conversations
 
-## Cuándo usarlo
+## When to use
 
-- Cuando necesites **ejemplos de chat** para la landing, demos o documentación del asistente.
-- Cuando el usuario pida guiones de respuesta para **stock**, **precios**, **cuotas**, **envíos** o **reservas**.
+- When you need **chat examples** for the landing, demos, or assistant documentation.
+- When the user asks for response scripts for **stock**, **pricing**, **installments**, **shipping**, or **reservations**.
 
-## Instrucciones
+## Instructions
 
-- Simulá conversaciones **realistas** entre un comprador y el **asistente con IA** (tono argentino, natural).
-- Temas típicos a cubrir (mezclá según contexto):
-  - **stock** y disponibilidad
-  - modelos de **iPhone** (líneas, capacidades)
-  - **colores**
-  - **cuotas** y formas de pago
-  - **envíos** y tiempos
-  - **reservas** y señas
-- El asistente debe **avanzar siempre hacia la venta o la reserva** (próximo paso claro: reservar, pasar lista de precios, coordinar retiro/envío).
-- Respuestas **concisas**, como en WhatsApp: párrafos cortos, bullets cuando ayude.
-- Evitá inglés en el diálogo salvo nombres de producto (iPhone, Pro, Max, etc.).
+- Simulate **realistic** conversations between a buyer and an **AI assistant** (Argentine tone, natural).
+- Typical topics to cover (mix as needed):
+  - **stock** and availability
+  - **iPhone** models (lines, capacities)
+  - **colors**
+  - **installments** and payment methods
+  - **shipping** and lead times
+  - **reservations** and deposits
+- The assistant must **always move toward a sale or reservation** (clear next step: reserve, send a price list, coordinate pickup/shipping).
+- Keep replies **concise**, WhatsApp-style: short paragraphs, bullets when helpful.
+- Avoid English in the dialog except product names (iPhone, Pro, Max, etc.). Follow project **language** rules: user-facing lines in **Argentine Spanish**.
 
-## Ejemplos
+## Examples
 
-### Ejemplo 1 — Consulta de stock y color
+(Dialogue below is **Argentine Spanish**, as deliverables should be.)
+
+### Example 1 — Stock and color
 
 **Cliente:** Hola, tenés iPhone 15 Pro 256 natural titanium?
 
 **Asistente:** ¡Hola! Sí, en este momento tenemos **15 Pro 256 GB en Natural Titanium**. Si querés te confirmo **precio final** y **formas de pago en cuotas** en un toque. ¿Lo buscás en efectivo/transferencia o con tarjeta?
 
-**Cliente:** Con tarjeta en cuotas. Cuánto sale?
+**Cliente:** Con tarjeta en cuotas. ¿Cuánto sale?
 
 **Asistente:** Perfecto. Con tarjeta depende del plan y el banco. Para darte el número exacto: ¿**cuántas cuotas** querés y con qué tarjeta (Visa/Master)? Mientras, te dejo el **valor de lista** y las opciones más comunes. Si te cierra, te **reservo** el equipo y coordinamos retiro o envío.
 
 ---
 
-### Ejemplo 2 — Envío y plazos
+### Example 2 — Shipping and timing
 
-**Cliente:** Hacen envío a Rosario? Cuánto demora?
+**Cliente:** ¿Hacen envío a Rosario? ¿Cuánto demora?
 
 **Asistente:** Sí, hacemos envíos. El tiempo depende del correo/mensajería y del día de despacho, pero en general estamos hablando de **2 a 5 días hábiles** (te confirmo al cotizar). Para pasarte el costo exacto necesito **CP** y si preferís **a domicilio** o **sucursal**. ¿Qué modelo estás buscando?
 
@@ -50,9 +52,9 @@ description: Genera conversaciones de WhatsApp realistas (comprador vs asistente
 
 ---
 
-### Ejemplo 3 — Reserva y seña
+### Example 3 — Reservation and deposit
 
-**Cliente:** Lo puedo reservar y lo retiro el viernes?
+**Cliente:** ¿Lo puedo reservar y lo retiro el viernes?
 
 **Asistente:** Sí. Podemos **reservarlo** con una **seña** y te lo guardamos hasta el viernes (te paso condiciones según el modelo). ¿Cuál querés exactamente (modelo/capacidad/color) y retirás en local o necesitás envío?
 

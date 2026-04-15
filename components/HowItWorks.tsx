@@ -8,47 +8,67 @@ const steps = [
   {
     n: "01",
     title: "Nos pasás tu catálogo",
-    body: "Modelos, precios, cuotas, zonas de envío y políticas. Lo ordenamos para web y para la IA.",
+    body: "Modelos, precios, cuotas y envíos. Lo ordenamos para web y para la IA.",
     visual: "catalog" as const,
   },
   {
     n: "02",
-    title: "Creamos tu web y configuramos la IA",
-    body: "Diseño premium, rápido y mobile-first. Entrenamos respuestas con tu tono y reglas de negocio.",
+    title: "Web + IA con tu tono",
+    body: "Diseño mobile-first y respuestas alineadas a tu negocio, listas para convertir.",
     visual: "setup" as const,
   },
   {
     n: "03",
-    title: "Empezás a recibir más consultas y ventas",
-    body: "Atención instantánea 24/7, menos pérdidas por demora y más cierres con seguimiento claro.",
+    title: "Más consultas, más cierres",
+    body: "Atención instantánea y seguimiento claro para cerrar ventas de forma constante.",
     visual: "metrics" as const,
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="relative overflow-hidden bg-[#040506] py-36 sm:py-48">
+    <section className="if-section bg-[#040506]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.08),transparent_55%)]" />
-      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-10">
+      <div className="relative if-container">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.55, ease: easeOut }}
+          className="if-eyebrow"
+        >
+          Proceso
+        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.65, ease: easeOut }}
-          className="max-w-[22ch] text-4xl font-semibold leading-[1.08] tracking-tight text-zinc-50 sm:text-5xl"
+          className="if-after-section-eyebrow if-h2 max-w-[20ch]"
         >
-          Simple. Rápido. Sin complicaciones.
+          Implementación premium en tres pasos
         </motion.h2>
 
-        <div className="mt-24 space-y-20 sm:space-y-24 lg:mt-28 lg:space-y-28">
-          {steps.map((s, i) => (
+        <div className="relative if-after-heading-block">
+          <div
+            className="pointer-events-none absolute left-[1.65rem] top-4 bottom-4 hidden w-px sm:left-[2.15rem] lg:block"
+            aria-hidden
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/50 via-blue-400/20 to-transparent" />
+            <div className="absolute inset-0 bg-blue-400/30 blur-[1px]" />
+          </div>
+
+          <div className="space-y-20 lg:space-y-24">
+            <TimelineStep step={steps[0]} index={0} isLast={false} className="lg:translate-x-0" />
             <TimelineStep
-              key={s.n}
-              step={s}
-              index={i}
-              isLast={i === steps.length - 1}
+              step={steps[1]}
+              index={1}
+              isLast={false}
+              className="lg:-translate-x-6 lg:scale-[1.03]"
+              featured
             />
-          ))}
+            <TimelineStep step={steps[2]} index={2} isLast className="lg:translate-x-4" />
+          </div>
         </div>
       </div>
     </section>
@@ -59,71 +79,76 @@ function TimelineStep({
   step,
   index,
   isLast,
+  className = "",
+  featured = false,
 }: {
   step: (typeof steps)[0];
   index: number;
   isLast: boolean;
+  className?: string;
+  featured?: boolean;
 }) {
-  const reverse = index % 2 === 1;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: 0.05 * index, duration: 0.65, ease: easeOut }}
-      className="flex gap-6 sm:gap-10"
+      className={`relative flex gap-8 transition-transform duration-300 sm:gap-12 lg:gap-16 ${className}`}
     >
-      <div className="flex w-14 shrink-0 flex-col items-center sm:w-20">
+      <div className="relative flex w-14 shrink-0 flex-col items-center sm:w-[4.5rem]">
         <div className="relative z-10">
-          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-blue-500/30 blur-lg" />
-          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-400/30 bg-zinc-950/95 text-lg font-semibold tabular-nums text-white shadow-[0_0_48px_-12px_rgba(59,130,246,0.5)] ring-1 ring-blue-400/25 sm:h-16 sm:w-16 sm:text-xl">
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-blue-500/35 blur-xl" />
+          <div className="relative flex h-16 w-14 items-center justify-center rounded-2xl border border-blue-400/35 bg-zinc-950/95 text-xl font-semibold tabular-nums text-white shadow-[0_0_48px_-12px_rgba(59,130,246,0.55)] ring-1 ring-blue-400/30 sm:h-[4.5rem] sm:w-16 sm:text-2xl">
             {step.n}
           </div>
         </div>
         {!isLast && (
           <div
-            className="mt-4 w-px flex-1 min-h-[120px] bg-gradient-to-b from-blue-500/40 via-blue-400/15 to-transparent sm:min-h-[140px]"
+            className="mt-4 min-h-[100px] w-px flex-1 bg-gradient-to-b from-blue-500/35 via-blue-400/10 to-transparent lg:hidden"
             aria-hidden
           />
         )}
       </div>
 
-      <div className="grid flex-1 gap-10 pb-4 lg:grid-cols-2 lg:items-center lg:gap-14">
-        <div className={`min-w-0 space-y-4 ${reverse ? "lg:order-2" : ""}`}>
-          <h3 className="text-2xl font-semibold leading-tight tracking-tight text-zinc-100 sm:text-[1.65rem]">
+      <div className="grid flex-1 if-split-copy-visual pb-4 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
+        <div className="min-w-0">
+          <h3
+            className={`font-semibold leading-tight tracking-tight text-zinc-100 ${
+              featured ? "text-[1.95rem]" : "text-2xl sm:text-[1.75rem]"
+            }`}
+          >
             {step.title}
           </h3>
-          <p className="max-w-xl text-[15px] leading-relaxed text-zinc-500">
-            {step.body}
-          </p>
+          <p className="if-after-title max-w-xl text-base leading-relaxed text-zinc-400">{step.body}</p>
         </div>
 
-        <div className={reverse ? "lg:order-1" : ""}>
-          <StepVisual type={step.visual} />
+        <div>
+          <StepVisual type={step.visual} featured={featured} />
         </div>
       </div>
     </motion.div>
   );
 }
 
-function StepVisual({ type }: { type: "catalog" | "setup" | "metrics" }) {
+function StepVisual({
+  type,
+  featured,
+}: {
+  type: "catalog" | "setup" | "metrics";
+  featured: boolean;
+}) {
   if (type === "catalog") {
     return (
       <motion.div
-        whileHover={{ y: -5 }}
+        whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 380, damping: 28 }}
-        className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-zinc-950/75 p-5 shadow-[0_32px_90px_-55px_rgba(0,0,0,0.9)] ring-1 ring-white/[0.05] backdrop-blur-md"
+        className="if-panel p-6 shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)] sm:p-7"
       >
-        <div className="pointer-events-none absolute -right-6 top-0 h-28 w-28 rounded-full bg-blue-500/18 blur-2xl" />
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Catálogo
-        </p>
-        <div className="mt-4 rounded-xl border border-white/[0.07] bg-white/[0.04] p-4">
-          <p className="text-[14px] font-semibold text-white">iPhone 16 Pro</p>
-          <p className="mt-2 text-[12px] leading-relaxed text-zinc-500">
-            256 GB · Titanio · USD 1.349
-          </p>
+        <p className="if-eyebrow text-zinc-500">Catálogo</p>
+        <div className="if-before-media rounded-xl border border-white/[0.07] bg-white/[0.04] p-5">
+          <p className="text-base font-semibold text-white">iPhone 16 Pro</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-500">256 GB · Titanio · USD 1.349</p>
         </div>
       </motion.div>
     );
@@ -132,20 +157,20 @@ function StepVisual({ type }: { type: "catalog" | "setup" | "metrics" }) {
   if (type === "setup") {
     return (
       <motion.div
-        whileHover={{ y: -5 }}
+        whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 380, damping: 28 }}
-        className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-gradient-to-b from-zinc-900/95 to-black/70 p-[1px] shadow-[0_32px_90px_-55px_rgba(0,0,0,0.9)] ring-1 ring-white/[0.05]"
+        className={`${featured ? "if-panel-featured" : "if-panel"} p-[1px]`}
       >
-        <div className="rounded-[1.4rem] bg-[#07080c] p-5">
-          <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+        <div className="rounded-[calc(2rem-1px)] bg-[#07080c] p-6 sm:p-7">
+          <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
             <span className="text-[11px] text-zinc-500">Web + IA</span>
             <ArrowUpRight className="h-4 w-4 text-zinc-600" />
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-3 py-3 text-center text-[10px] font-medium text-zinc-400">
+          <div className="if-before-media grid grid-cols-2 gap-3">
+            <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-3 py-4 text-center text-[10px] font-medium text-zinc-400">
               Sitio online
             </div>
-            <div className="flex items-center justify-center gap-2 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-3 text-[10px] font-medium text-emerald-200">
+            <div className="flex items-center justify-center gap-2 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-4 text-[10px] font-medium text-emerald-200">
               <MessageCircle className="h-3.5 w-3.5" />
               WhatsApp
             </div>
@@ -157,28 +182,23 @@ function StepVisual({ type }: { type: "catalog" | "setup" | "metrics" }) {
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 380, damping: 28 }}
-      className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-zinc-950/75 p-5 shadow-[0_32px_90px_-55px_rgba(0,0,0,0.9)] ring-1 ring-white/[0.05]"
+      className="if-panel p-6 shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)] sm:p-7"
     >
-      <div className="pointer-events-none absolute -left-8 bottom-0 h-32 w-32 rounded-full bg-blue-500/14 blur-2xl" />
-      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-        Métricas
-      </p>
-      <div className="mt-4 grid grid-cols-3 gap-2">
+      <p className="if-eyebrow text-zinc-500">Métricas</p>
+      <div className="if-before-media grid grid-cols-3 gap-3">
         {[
-          { k: "+18 consultas", sub: "hoy" },
-          { k: "3 ventas", sub: "cerradas" },
+          { k: "+18", sub: "consultas" },
+          { k: "3", sub: "cierres" },
           { k: "24/7", sub: "activo" },
         ].map((m) => (
           <div
             key={m.k}
-            className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-2 py-3 text-center"
+            className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-2 py-4 text-center"
           >
-            <p className="text-[11px] font-semibold leading-tight text-zinc-100">
-              {m.k}
-            </p>
-            <p className="mt-1 text-[9px] text-zinc-600">{m.sub}</p>
+            <p className="text-sm font-semibold leading-tight text-zinc-100 sm:text-base">{m.k}</p>
+            <p className="mt-1 text-[9px] uppercase tracking-wider text-zinc-600">{m.sub}</p>
           </div>
         ))}
       </div>

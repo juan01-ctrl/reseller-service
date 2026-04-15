@@ -1,10 +1,10 @@
 ---
-description: Idioma y tono para todo el proyecto
+description: Language and tone for the whole project
 alwaysApply: true
 ---
 
-# Idioma
+# Language
 
-- Todo el contenido debe estar escrito en **español**.
-- Usá **español rioplatense (Argentina)** en tono natural y profesional.
-- No mezcles inglés en textos de marketing, UI ni conversaciones; la única excepción son **nombres de frameworks o herramientas** cuando no tengan traducción establecida (por ejemplo Next.js, React).
+- All content must be written in **Spanish**.
+- Use natural, professional **Rioplatense Spanish (Argentina)**.
+- Do not mix English into marketing copy, UI strings, or conversational scripts; the only exception is **framework or tool names** when there is no stable translation (e.g. Next.js, React).

@@ -1,35 +1,35 @@
 ---
 name: conversion-review
-description: Revisa una sección existente de la landing y propone mejoras concretas para conversión (CTA, prueba social, fricción).
+description: Review an existing landing section and propose concrete conversion improvements (CTA, social proof, friction).
 ---
 
-# Revisión de conversión
+# Conversion review
 
-## Cuándo usarlo
+## When to use
 
-- Cuando ya exista una sección (copy + estructura) y quieras **mejorar leads** sin reescribir todo desde cero.
-- Antes de publicar: chequeo rápido de **claridad**, **confianza** y **CTA**.
+- When a section already exists (copy + structure) and you want **more leads** without rewriting everything from scratch.
+- Before launch: a quick pass on **clarity**, **trust**, and **CTA**.
 
-## Instrucciones
+## Instructions
 
-- Evaluá el **titular**: ¿promete un resultado claro en 1 frase? Si es vago, proponé una variante más directa.
-- Reducí **fricción**: menos pasos mentales, menos dudas (qué incluye, qué pasa después, plazos).
-- Fortalecé el **CTA**: verbo concreto, beneficio implícito, contraste visual (sin ser agresivo).
-- Sumá **prueba social** donde falte: métricas, logos, testimonios cortos, garantías claras (solo si son creíbles).
-- Eliminá texto que no empuje a la acción: redundancias, párrafos largos, “marketing vacío”.
-- Devolvé sugerencias **accionables** (qué cambiar y por qué), priorizadas por impacto.
+- Evaluate the **headline**: does it promise a clear outcome in one line? If it is vague, propose a more direct variant.
+- Reduce **friction**: fewer mental steps, fewer doubts (what is included, what happens next, timelines).
+- Strengthen the **CTA**: concrete verb, implied benefit, visual contrast (without being aggressive).
+- Add **social proof** where it is missing: metrics, logos, short testimonials, clear guarantees (only if credible).
+- Remove copy that does not drive action: redundancy, long paragraphs, empty “marketing speak”.
+- Return **actionable** suggestions (what to change and why), prioritized by impact.
 
-## Ejemplos
+## Examples
 
-**Entrada (problemático):**
+**Input (problematic):**
 
-- Titular: “Soluciones digitales para tu empresa”
-- CTA: “Más info”
-- Texto: párrafo de 6 líneas sin beneficio explícito
+- Headline: “Digital solutions for your business”
+- CTA: “More info”
+- Body: six-line paragraph with no explicit benefit
 
-**Salida (tipo de feedback esperado):**
+**Output (expected feedback style):**
 
-- Titular: reemplazar por resultado: “Más ventas con una web que vende y un asistente que responde 24/7”.
-- CTA: “Pedí una demo” o “Hablemos por WhatsApp” (acción clara).
-- Texto: bajar a 2 bullets con outcomes (“Menos tiempo respondiendo”, “Consultas fuera de horario convertidas”).
-- Prueba social: agregar 1 línea verificable (“Importadores que ya usan…” + métrica simple).
+- Headline: replace with an outcome: “More sales with a site that sells and an assistant that replies 24/7.”
+- CTA: “Book a demo” or “Talk on WhatsApp” (clear action).
+- Body: reduce to two bullets with outcomes (“Less time replying”, “After-hours inquiries turned into leads”).
+- Social proof: add one verifiable line (“Importers already using…” + a simple metric).

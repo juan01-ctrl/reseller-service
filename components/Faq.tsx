@@ -11,37 +11,55 @@ const faqs = [
   },
   {
     q: "¿Puedo cambiar precios o stock?",
-    a: "Por supuesto. Actualizamos catálogo, precios, cuotas y disponibilidad para que la IA siempre informe datos correctos.",
+    a: "Sí. Actualizamos catálogo, precios, cuotas y disponibilidad para que la IA informe datos correctos.",
   },
   {
     q: "¿Cuánto tarda en estar listo?",
-    a: "Depende del tamaño del catálogo, pero en la mayoría de los casos podés estar operando en pocos días una vez que tenemos la información.",
+    a: "Depende del tamaño del catálogo; en la mayoría de los casos podés estar operando en pocos días con la información lista.",
   },
   {
     q: "¿Funciona aunque no tenga página web hoy?",
-    a: "Sí. Podemos crear tu web desde cero y conectar el asistente para que empieces con presencia profesional de una.",
+    a: "Sí. Creamos tu web y conectamos el asistente para que empieces con presencia profesional.",
   },
   {
-    q: "¿Puedo atender yo mismo algunas consultas?",
-    a: "Sí. La IA cubre lo repetitivo y vos podés intervenir cuando quieras, especialmente en casos que requieran criterio humano.",
+    q: "¿Puedo atender yo algunas consultas?",
+    a: "Sí. La IA cubre lo repetitivo y vos intervenís cuando quieras, especialmente cuando hace falta criterio humano.",
   },
 ];
 
 export function Faq() {
   return (
-    <section className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+    <section className="if-section">
+      <div className="if-container">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.45 }}
+          className="if-eyebrow text-center"
+        >
+          FAQ
+        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.45 }}
-          className="text-balance text-center text-4xl font-semibold tracking-tight text-zinc-50 sm:text-5xl"
+          className="if-after-section-eyebrow if-h2 text-balance text-center"
         >
           Preguntas frecuentes
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.45, delay: 0.05 }}
+          className="if-after-h2-lead mx-auto max-w-[44ch] text-center if-lead"
+        >
+          Respuestas claras para decidir rápido si ImportaFlow encaja con tu operación.
+        </motion.p>
 
-        <div className="mt-12 space-y-3">
+        <div className="mt-12 mx-auto max-w-3xl space-y-3">
           {faqs.map((item, i) => (
             <FaqItem key={item.q} item={item} index={i} />
           ))}
@@ -66,16 +84,14 @@ function FaqItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: 0.04 * index, duration: 0.4 }}
-      className="overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.02] shadow-glass backdrop-blur-xl transition hover:border-white/[0.12]"
+      className="if-surface-static overflow-hidden transition hover:border-white/[0.1]"
     >
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
       >
-        <span className="text-sm font-semibold text-white sm:text-base">
-          {item.q}
-        </span>
+        <span className="text-sm font-semibold text-white sm:text-base">{item.q}</span>
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25 }}

@@ -1,5 +1,5 @@
 ---
-description: Stack técnico del proyecto
+description: Project tech stack
 alwaysApply: true
 ---
 
@@ -7,7 +7,7 @@ alwaysApply: true
 
 - **Next.js** (App Router).
 - **React**.
-- **Tailwind CSS** para estilos.
-- **Framer Motion** solo para animaciones **sutiles** (microinteracciones, fades, no excesos).
-- **Lucide** para iconos.
-- Componentes **reutilizables**; no dupliques patrones de UI sin extraerlos a componentes compartidos.
+- **Tailwind CSS** for styling.
+- **Framer Motion** only for **subtle** animation (micro-interactions, fades—no excess).
+- **Lucide** for icons.
+- **Reusable** components; do not duplicate UI patterns without extracting shared components.
