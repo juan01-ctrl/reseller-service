@@ -13,30 +13,20 @@ import { TrustBar } from "@/components/TrustBar";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(59,130,246,0.16),transparent_55%)]" />
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-fade opacity-[0.28]" />
-      <div className="noise-overlay pointer-events-none fixed inset-0 -z-10 opacity-[0.35]" />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#06070b] text-zinc-100">
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_120%_80%_at_50%_-25%,rgba(59,130,246,0.12),transparent_58%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-fade opacity-[0.18]" />
+      <div className="noise-overlay pointer-events-none fixed inset-0 -z-10 opacity-[0.22]" />
       <Header />
       <Hero />
-      <div className="relative border-t border-white/[0.04] bg-zinc-950/20">
-        <TrustBar />
-      </div>
-      <div className="relative bg-[linear-gradient(180deg,rgba(9,9,11,0.9)_0%,rgba(9,9,11,0.4)_45%,transparent_100%)]">
-        <Problem />
-      </div>
+      <TrustBar />
+      <Problem />
       <Solution />
-      <div className="relative border-y border-white/[0.04] bg-zinc-950/30">
-        <HowItWorks />
-      </div>
+      <HowItWorks />
       <ExampleChat />
-      <div className="relative bg-gradient-to-b from-transparent via-zinc-950/50 to-zinc-950/80">
-        <Benefits />
-      </div>
+      <Benefits />
       <Pricing />
-      <div className="relative border-t border-white/[0.04] bg-zinc-950/40">
-        <Faq />
-      </div>
+      <Faq />
       <FinalCta />
       <Footer />
     </main>

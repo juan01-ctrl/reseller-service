@@ -2,42 +2,44 @@
 
 import { motion } from "framer-motion";
 import { CtaButtons } from "@/components/CtaButtons";
-import { easeOut } from "@/lib/motion";
 
 export function FinalCta() {
   return (
-    <section className="relative pb-28 pt-12 sm:pb-36 sm:pt-16">
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.65, ease: easeOut }}
-          className="relative overflow-hidden rounded-[2.25rem] border border-white/[0.12] bg-gradient-to-br from-white/[0.12] via-blue-500/[0.12] to-indigo-600/15 p-[1px] shadow-glass"
-        >
-          <div className="noise-overlay relative overflow-hidden rounded-[2.2rem] bg-zinc-950/40 px-6 py-16 text-center backdrop-blur-2xl sm:px-14 sm:py-20">
-            <div className="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-blue-500/30 blur-[100px]" />
-            <div className="pointer-events-none absolute -right-28 bottom-0 h-72 w-72 rounded-full bg-indigo-500/25 blur-[100px]" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.06),transparent_55%)]" />
+    <section className="relative w-full overflow-hidden bg-[#030304] py-36 sm:py-48">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,rgba(59,130,246,0.18),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.08),transparent_45%)]" />
+      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.2]" />
 
-            <div className="relative mx-auto max-w-3xl">
-              <h2 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl sm:leading-[1.1]">
-                Tu negocio ya tiene demanda. Solo necesitás responder mejor y verte
-                más profesional.
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 sm:text-xl">
-                Te ayudamos a tener una web y un asistente con IA listos en pocos
-                días.
-              </p>
-              <div className="mt-10 flex justify-center">
-                <CtaButtons
-                  variant="emphasis"
-                  className="justify-center"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute left-[8%] top-[22%] hidden rounded-2xl border border-white/[0.06] bg-zinc-950/60 px-4 py-3 text-[11px] text-zinc-500 shadow-2xl backdrop-blur-md lg:block"
+      >
+        +18% consultas calificadas
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute bottom-[26%] right-[10%] hidden rounded-2xl border border-white/[0.06] bg-zinc-950/60 px-4 py-3 text-[11px] text-zinc-500 shadow-2xl backdrop-blur-md lg:block"
+      >
+        {`Respuesta < 30s`}
+      </motion.div>
+
+      <div className="relative mx-auto max-w-[720px] px-5 text-center sm:px-10">
+        <h2 className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-zinc-50 sm:text-5xl sm:leading-[1.08]">
+          Tu negocio ya tiene demanda. Solo necesitás responder mejor y verte más
+          profesional.
+        </h2>
+        <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-zinc-500 sm:text-xl">
+          Te ayudamos a tener una web y un asistente con IA listos en pocos días.
+        </p>
+        <div className="mt-12 flex justify-center">
+          <CtaButtons variant="emphasis" className="justify-center" />
+        </div>
       </div>
     </section>
   );

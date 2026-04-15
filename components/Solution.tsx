@@ -1,17 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Bot,
-  Globe2,
-  LayoutGrid,
-  MessageCircle,
-  MousePointerClick,
-  Sparkles,
-} from "lucide-react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ArrowUpRight, Bot, Globe2, MousePointer2 } from "lucide-react";
+import { useRef } from "react";
 import { easeOut } from "@/lib/motion";
 
-const webPoints = [
+const webItems = [
   "Productos y precios",
   "Información de pago y cuotas",
   "Botón de WhatsApp",
@@ -19,7 +13,7 @@ const webPoints = [
   "Adaptada a celular",
 ];
 
-const aiPoints = [
+const aiItems = [
   "Responde preguntas automáticamente",
   "Informa stock, modelos y precios",
   "Atiende por WhatsApp y web",
@@ -29,106 +23,52 @@ const aiPoints = [
 
 export function Solution() {
   return (
-    <section className="relative py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-blue-500/[0.07] via-transparent to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: easeOut }}
-          className="max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl"
-        >
-          Todo lo que necesitás para vender más
-        </motion.h2>
+    <section className="relative overflow-hidden border-y border-white/[0.05] bg-[#050608] py-36 sm:py-48">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_15%_30%,rgba(59,130,246,0.09),transparent_55%)]" />
+      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-10">
+        <div className="grid items-start gap-16 lg:grid-cols-[minmax(0,42%)_minmax(0,58%)] lg:gap-16 xl:gap-20">
+          <div className="max-w-[28rem]">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.55, ease: easeOut }}
+              className="text-[11px] font-medium uppercase tracking-[0.22em] text-blue-400/90"
+            >
+              Solución
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.04, ease: easeOut }}
+              className="mt-5 text-4xl font-semibold leading-[1.06] tracking-tight text-zinc-50 sm:text-[2.75rem] sm:leading-[1.05]"
+            >
+              Todo lo que necesitás
+              <br />
+              para vender más
+            </motion.h2>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-12 lg:items-stretch">
-          <FeatureCard
-            className="lg:col-span-7"
-            title="Web profesional para tu negocio"
-            icon={Globe2}
-            points={webPoints}
-            variant="web"
-          />
-          <FeatureCard
-            className="lg:col-span-5"
-            title="Asistente con IA 24/7"
-            icon={Bot}
-            points={aiPoints}
-            variant="ai"
-          />
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.65, ease: easeOut }}
-          className="relative mt-12 overflow-hidden rounded-[2rem] border border-white/[0.1] bg-gradient-to-br from-white/[0.08] via-zinc-950/60 to-zinc-950 shadow-glass backdrop-blur-2xl"
-        >
-          <div className="pointer-events-none absolute -left-32 top-0 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
-          <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-indigo-500/15 blur-3xl" />
-          <div className="relative grid gap-6 p-6 sm:p-8 lg:grid-cols-12 lg:gap-8">
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black/35 p-5 shadow-inner lg:col-span-7">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <LayoutGrid className="h-4 w-4 text-blue-400" />
-                  Panel ImportaFlow
-                </div>
-                <span className="rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-300 ring-1 ring-emerald-400/20">
-                  IA activa
-                </span>
-              </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <MiniStat label="Consultas hoy" value="42" delta="+18%" />
-                <MiniStat label="Tiempo ahorrado" value="3h 20m" delta="-62%" />
-                <MiniStat label="Reservas" value="7" delta="+3" />
-              </div>
-              <div className="mt-5 rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent p-4">
-                <div className="flex items-center justify-between text-[11px] font-medium text-zinc-500">
-                  <span>Embudo · Web → WhatsApp</span>
-                  <Sparkles className="h-3.5 w-3.5 text-blue-400" />
-                </div>
-                <div className="mt-4 flex h-28 items-end gap-1.5">
-                  {[40, 55, 48, 72, 64, 88, 76].map((h, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${h}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.04 * i, ease: easeOut }}
-                      className="flex-1 rounded-md bg-gradient-to-t from-blue-700/50 to-blue-400/90 shadow-[0_8px_30px_-12px_rgba(59,130,246,0.55)]"
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center gap-4 rounded-2xl border border-white/[0.07] bg-gradient-to-br from-zinc-900/90 to-zinc-950 p-5 lg:col-span-5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Flujo unificado
-              </p>
-              <div className="space-y-3">
-                <FlowRow
-                  icon={Globe2}
-                  title="Tu web muestra catálogo y precios"
-                  sub="Los clientes entran con más confianza"
-                />
-                <FlowRow
-                  icon={MessageCircle}
-                  title="WhatsApp y chat web con la misma IA"
-                  sub="Respuestas consistentes, sin repetir"
-                />
-                <FlowRow
-                  icon={MousePointerClick}
-                  title="CTA claro en cada paso"
-                  sub="Más consultas calificadas, menos fricción"
-                />
-              </div>
+            <div className="mt-12 space-y-6">
+              <FeatureCard
+                title="Web profesional para tu negocio"
+                items={webItems}
+                icon={Globe2}
+                accent="blue"
+                trustLine="Listo en pocos días"
+              />
+              <FeatureCard
+                title="Asistente con IA 24/7"
+                items={aiItems}
+                icon={Bot}
+                accent="emerald"
+                trustLine="Responde incluso mientras dormís"
+              />
             </div>
           </div>
-        </motion.div>
+
+          <SolutionScene />
+        </div>
       </div>
     </section>
   );
@@ -136,116 +76,206 @@ export function Solution() {
 
 function FeatureCard({
   title,
+  items,
   icon: Icon,
-  points,
-  variant,
-  className = "",
+  accent,
+  trustLine,
 }: {
   title: string;
+  items: string[];
   icon: React.ComponentType<{ className?: string }>;
-  points: string[];
-  variant: "web" | "ai";
-  className?: string;
+  accent: "blue" | "emerald";
+  trustLine: string;
 }) {
-  const isWeb = variant === "web";
+  const ring =
+    accent === "blue"
+      ? "border-blue-500/15 bg-gradient-to-br from-blue-500/[0.08] to-transparent"
+      : "border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.07] to-transparent";
+  const dot = accent === "blue" ? "bg-blue-400/80" : "bg-emerald-400/80";
+  const iconBg =
+    accent === "blue"
+      ? "border-blue-400/20 bg-blue-500/10 text-blue-200"
+      : "border-emerald-400/20 bg-emerald-500/10 text-emerald-200";
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 22 }}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.55, ease: easeOut }}
-      whileHover={{ y: -4 }}
-      className={`group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-gradient-to-br p-7 shadow-card backdrop-blur-2xl sm:p-8 ${
-        isWeb
-          ? "from-blue-500/20 via-white/[0.04] to-indigo-500/10"
-          : "from-emerald-500/15 via-white/[0.03] to-cyan-500/10"
-      } ${className}`}
+      className={`relative overflow-hidden rounded-[1.75rem] border p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.04] backdrop-blur-sm ${ring}`}
     >
-      <div
-        className={`pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl ${
-          isWeb ? "bg-blue-500/25" : "bg-emerald-500/20"
-        }`}
-      />
-      <div className="relative flex items-start gap-4">
+      <div className="pointer-events-none absolute -right-12 top-0 h-32 w-32 rounded-full bg-blue-500/5 blur-2xl" />
+      <div className="relative flex items-start gap-3">
         <div
-          className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-white shadow-inner ${
-            isWeb
-              ? "border-white/15 bg-white/10"
-              : "border-emerald-400/20 bg-emerald-500/10"
-          }`}
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${iconBg}`}
         >
-          <Icon className="h-6 w-6" aria-hidden />
+          <Icon className="h-5 w-5" aria-hidden />
         </div>
-        <div>
-          <h3 className="text-xl font-bold tracking-tight text-white sm:text-[1.35rem]">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-[15px] font-semibold tracking-tight text-zinc-100">
             {title}
           </h3>
+          <p className="mt-2 text-[11px] font-medium text-zinc-600">{trustLine}</p>
         </div>
       </div>
-      <ul
-        className={`relative mt-7 grid gap-3 sm:grid-cols-2 ${
-          isWeb ? "sm:grid-cols-2" : "sm:grid-cols-1"
-        }`}
-      >
-        {points.map((p) => (
-          <li
-            key={p}
-            className="flex gap-3 rounded-xl border border-white/[0.05] bg-black/15 px-3 py-2.5 text-sm text-zinc-200"
-          >
-            <span
-              className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                isWeb ? "bg-blue-400" : "bg-emerald-400"
-              }`}
-            />
-            <span>{p}</span>
+      <ul className="relative mt-5 space-y-2.5 border-t border-white/[0.06] pt-5">
+        {items.map((line) => (
+          <li key={line} className="flex gap-3 text-[14px] leading-snug text-zinc-400">
+            <span className={`mt-2 h-1 w-1 shrink-0 rounded-full ${dot}`} />
+            <span>{line}</span>
           </li>
         ))}
       </ul>
-    </motion.article>
+    </motion.div>
   );
 }
 
-function MiniStat({
-  label,
-  value,
-  delta,
-}: {
-  label: string;
-  value: string;
-  delta: string;
-}) {
-  return (
-    <div className="rounded-xl border border-white/[0.06] bg-white/[0.04] p-3 shadow-inner">
-      <p className="text-[10px] font-medium uppercase tracking-wide text-zinc-500">
-        {label}
-      </p>
-      <p className="mt-1 text-lg font-bold text-white">{value}</p>
-      <p className="text-[11px] font-medium text-emerald-400">{delta}</p>
-    </div>
-  );
-}
+function SolutionScene() {
+  const ref = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 420, damping: 35 });
+  const sy = useSpring(my, { stiffness: 420, damping: 35 });
 
-function FlowRow({
-  icon: Icon,
-  title,
-  sub,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  sub: string;
-}) {
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * 14);
+    my.set(((e.clientY - r.top) / r.height - 0.5) * 14);
+  };
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
   return (
     <motion.div
-      whileHover={{ x: 2 }}
-      className="flex gap-3 rounded-xl border border-white/[0.06] bg-black/25 px-3 py-3 transition hover:border-white/15"
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.75, ease: easeOut }}
+      className="relative min-h-[480px] lg:min-h-[560px]"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
-        <Icon className="h-4 w-4 text-blue-300" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[min(120%,520px)] w-[min(120%,640px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_40%_35%,rgba(59,130,246,0.22),transparent_62%)] blur-3xl" />
+      <div className="pointer-events-none absolute -right-8 bottom-8 h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: [0, -6, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -right-2 top-6 z-30 hidden rounded-2xl border border-white/[0.1] bg-zinc-950/85 px-3.5 py-2 text-[11px] font-medium text-zinc-200 shadow-2xl backdrop-blur-xl ring-1 ring-white/[0.06] sm:right-4 sm:top-10 sm:block"
+      >
+        +42 consultas respondidas hoy
+      </motion.div>
+
+      <div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        className="relative z-[1] mx-auto max-w-[640px] lg:max-w-none"
+      >
+        <div className="rounded-[2rem] border border-white/[0.09] bg-gradient-to-b from-zinc-900/90 to-[#030508] p-[1px] shadow-[0_60px_140px_-70px_rgba(0,0,0,0.95)] ring-1 ring-white/[0.05]">
+          <div className="overflow-hidden rounded-[1.95rem]">
+            <div className="flex items-center justify-between border-b border-white/[0.06] bg-black/55 px-5 py-3.5">
+              <span className="text-[12px] text-zinc-500">
+                importacionesapple.com.ar
+              </span>
+              <span className="rounded-full bg-emerald-500/12 px-2.5 py-1 text-[10px] font-medium text-emerald-300">
+                IA activa
+              </span>
+            </div>
+
+            <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="border-b border-white/[0.05] p-6 lg:border-b-0 lg:border-r">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                  Catálogo
+                </p>
+                <motion.div
+                  style={{ x: sx, y: sy }}
+                  className="relative mt-5 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 ring-1 ring-white/[0.04]"
+                >
+                  <div className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full border border-white/10 bg-zinc-950/80 text-zinc-500 shadow-lg">
+                    <MousePointer2 className="h-3.5 w-3.5" aria-hidden />
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="h-24 w-20 shrink-0 rounded-xl bg-gradient-to-br from-zinc-600/40 to-zinc-950 ring-1 ring-white/10" />
+                    <div className="min-w-0 pt-0.5">
+                      <p className="text-base font-semibold text-white">iPhone 16 Pro</p>
+                      <p className="mt-1 text-[12px] text-zinc-500">256 GB · Titanio</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <span className="rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-semibold text-emerald-300 ring-1 ring-emerald-400/20">
+                          Stock disponible
+                        </span>
+                        <span className="rounded-full bg-white/[0.06] px-2.5 py-1 text-[10px] text-zinc-300 ring-1 ring-white/[0.08]">
+                          6 cuotas
+                        </span>
+                      </div>
+                      <p className="mt-4 text-sm font-semibold text-zinc-100">USD 1.349</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="mt-5 w-full rounded-full bg-blue-500/25 py-2.5 text-[12px] font-semibold text-blue-100 ring-1 ring-blue-400/25 transition hover:bg-blue-500/35"
+                  >
+                    Consultar por WhatsApp
+                  </button>
+                </motion.div>
+              </div>
+
+              <div className="relative bg-[#0b141a] p-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
+                  Asistente
+                </p>
+                <div className="mt-4 space-y-2.5">
+                  <div className="ml-auto max-w-[95%] rounded-2xl rounded-tr-md bg-[#005c4b] px-3 py-2 text-[12px] text-white/95">
+                    ¿Precio en cuotas?
+                  </div>
+                  <div className="mr-auto max-w-[95%] rounded-2xl rounded-tl-md bg-[#1f2c33] px-3 py-2 text-[12px] text-zinc-200">
+                    Sí: 3 y 6 cuotas con recargo según banco.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between border-t border-white/[0.05] bg-black/40 px-5 py-3.5 text-[11px] text-zinc-600">
+              <span>Web → WhatsApp · mismo contexto</span>
+              <ArrowUpRight className="h-4 w-4 text-zinc-600" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <p className="text-sm font-semibold text-zinc-100">{title}</p>
-        <p className="text-xs text-zinc-500">{sub}</p>
-      </div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.65, delay: 0.15, ease: easeOut }}
+        className="absolute -bottom-2 right-0 z-20 w-[min(100%,17rem)] rotate-[2deg] sm:bottom-4 sm:right-2 lg:-bottom-4 lg:right-[-0.5rem]"
+      >
+        <motion.div
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          className="overflow-hidden rounded-2xl border border-white/[0.12] bg-[#0b141a] shadow-[0_40px_100px_-50px_rgba(16,185,129,0.35)] ring-1 ring-white/[0.06]"
+        >
+          <div className="flex items-center gap-2 border-b border-white/[0.06] bg-[#1f2c33] px-3 py-2">
+            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600" />
+            <div>
+              <p className="text-[11px] font-semibold text-white">WhatsApp</p>
+              <p className="text-[9px] text-emerald-400/95">en línea</p>
+            </div>
+          </div>
+          <div className="space-y-2 p-3">
+            <div className="ml-auto max-w-[95%] rounded-xl rounded-tr-sm bg-[#005c4b] px-2.5 py-1.5 text-[11px] text-white/95">
+              ¿Tenés stock del 16 Pro?
+            </div>
+            <div className="mr-auto max-w-[95%] rounded-xl rounded-tl-sm bg-[#202c33] px-2.5 py-1.5 text-[11px] text-zinc-200">
+              Sí, 256 GB disponible.
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }

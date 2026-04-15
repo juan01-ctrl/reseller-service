@@ -1,106 +1,107 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock3, MessageSquareOff, Smartphone } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import { easeOut } from "@/lib/motion";
 
-const items = [
-  {
-    title: "Responden tarde",
-    body: "Los clientes preguntan por stock, precio o cuotas y terminan comprando en otro lado.",
-    icon: Clock3,
-    accent: "from-rose-500/15 to-orange-500/5",
-  },
-  {
-    title: "No tienen web",
-    body: "Solo venden por Instagram o WhatsApp y eso genera menos confianza.",
-    icon: Smartphone,
-    accent: "from-blue-500/15 to-indigo-500/5",
-  },
-  {
-    title: "Siempre responden lo mismo",
-    body: "Pierden horas respondiendo preguntas repetidas sobre modelos, stock y envíos.",
-    icon: MessageSquareOff,
-    accent: "from-violet-500/15 to-fuchsia-500/5",
-  },
-];
-
 export function Problem() {
-  const IconA = items[0].icon;
-  const IconB = items[1].icon;
-  const IconC = items[2].icon;
-
   return (
-    <section className="relative py-24 sm:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(59,130,246,0.08),transparent_60%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-8">
+    <section className="relative py-32 sm:py-40">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(59,130,246,0.06),transparent_55%)]" />
+      <div className="relative mx-auto max-w-[1400px] px-5 sm:px-10">
         <motion.h2
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: easeOut }}
-          className="max-w-4xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl sm:leading-[1.08]"
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.65, ease: easeOut }}
+          className="max-w-[26ch] text-4xl font-semibold leading-[1.08] tracking-tight text-zinc-100 sm:text-5xl sm:leading-[1.06]"
         >
           La mayoría de los importadores pierde ventas todos los días
         </motion.h2>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-12 lg:gap-6">
+        <div className="mt-20 grid gap-6 lg:grid-cols-12 lg:gap-8 lg:grid-rows-[auto_auto]">
           <motion.article
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: easeOut }}
-            whileHover={{ y: -3 }}
-            className={`group relative overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-gradient-to-br ${items[0].accent} p-8 shadow-glass backdrop-blur-xl lg:col-span-7 lg:min-h-[280px]`}
+            transition={{ duration: 0.6, ease: easeOut }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/[0.07] bg-gradient-to-br from-rose-500/[0.08] via-zinc-950/40 to-zinc-950 p-8 shadow-[0_40px_100px_-60px_rgba(0,0,0,0.85)] lg:col-span-7 lg:row-span-2 lg:min-h-[360px]"
           >
-            <div className="pointer-events-none absolute -right-16 top-0 h-48 w-48 rounded-full bg-white/5 blur-3xl" />
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/20 text-rose-200">
-              <IconA className="h-6 w-6" aria-hidden />
-            </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white">
-              {items[0].title}
+            <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-rose-500/10 blur-3xl" />
+            <h3 className="text-2xl font-semibold tracking-tight text-white">
+              Responden tarde
             </h3>
-            <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-300">
-              {items[0].body}
+            <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-zinc-400">
+              Los clientes preguntan por stock, precio o cuotas y terminan comprando
+              en otro lado.
             </p>
-          </motion.article>
-
-          <motion.article
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.06, ease: easeOut }}
-            whileHover={{ y: -3 }}
-            className={`group relative overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-gradient-to-br ${items[1].accent} p-7 shadow-card backdrop-blur-xl lg:col-span-5`}
-          >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/15 text-blue-200">
-              <IconB className="h-5 w-5" aria-hidden />
-            </div>
-            <h3 className="mt-5 text-xl font-semibold text-white">{items[1].title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              {items[1].body}
-            </p>
-          </motion.article>
-
-          <motion.article
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.1, ease: easeOut }}
-            whileHover={{ y: -3 }}
-            className={`relative overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-gradient-to-br ${items[2].accent} p-7 shadow-card backdrop-blur-xl lg:col-span-8 lg:col-start-3`}
-          >
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/15 text-violet-200">
-                  <IconC className="h-5 w-5" aria-hidden />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-white">
-                  {items[2].title}
-                </h3>
+            <div className="mt-10 rounded-[1.25rem] border border-white/[0.08] bg-black/40 p-4 ring-1 ring-white/[0.04]">
+              <div className="flex items-center justify-between gap-3 text-[11px] text-zinc-500">
+                <span className="flex items-center gap-2">
+                  <MessageCircle className="h-3.5 w-3.5 text-zinc-600" />
+                  WhatsApp Business
+                </span>
+                <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-medium text-rose-200">
+                  pendiente
+                </span>
               </div>
-              <p className="max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base sm:leading-relaxed">
-                {items[2].body}
+              <p className="mt-3 text-[12px] leading-relaxed text-zinc-300">
+                “¿Tenés 16 Pro 256 disponible?”
+              </p>
+              <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3 text-[10px] text-zinc-600">
+                <span>Consulta sin responder</span>
+                <span className="text-rose-300/90">hace 3 hs</span>
+              </div>
+            </div>
+          </motion.article>
+
+          <motion.article
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.06, ease: easeOut }}
+            className="rounded-[2rem] border border-white/[0.07] bg-zinc-950/60 p-7 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.75)] lg:col-span-5 lg:col-start-8 lg:row-start-1"
+          >
+            <h3 className="text-xl font-semibold text-white">No tienen web</h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+              Solo venden por Instagram o WhatsApp y eso genera menos confianza.
+            </p>
+            <div className="mt-6 rounded-xl border border-white/[0.06] bg-gradient-to-b from-purple-500/10 to-black/40 p-4">
+              <div className="flex items-center gap-2 text-[11px] font-semibold text-zinc-200">
+                <Instagram className="h-4 w-4 text-pink-400" />
+                @importaciones.apple
+              </div>
+              <p className="mt-3 text-[11px] leading-relaxed text-zinc-500">
+                Link en bio · DM para precio · sin catálogo claro
+              </p>
+            </div>
+          </motion.article>
+
+          <motion.article
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: easeOut }}
+            className="rounded-[2rem] border border-white/[0.07] bg-zinc-950/60 p-7 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.75)] lg:col-span-5 lg:col-start-8 lg:row-start-2"
+          >
+            <h3 className="text-xl font-semibold text-white">
+              Siempre responden lo mismo
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+              Pierden horas respondiendo preguntas repetidas sobre modelos, stock y
+              envíos.
+            </p>
+            <div className="mt-6 space-y-2 rounded-xl border border-white/[0.06] bg-black/35 p-3">
+              {["¿Cuotas?", "¿Envíos?", "¿Stock?"].map((t) => (
+                <div
+                  key={t}
+                  className="rounded-lg bg-white/[0.04] px-2.5 py-2 text-[11px] text-zinc-400"
+                >
+                  Cliente: {t}
+                </div>
+              ))}
+              <p className="pt-1 text-center text-[10px] text-zinc-600">
+                mismo día · misma respuesta manual
               </p>
             </div>
           </motion.article>

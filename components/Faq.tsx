@@ -36,7 +36,7 @@ export function Faq() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.45 }}
-          className="text-balance text-center text-4xl font-bold tracking-tight text-white sm:text-5xl"
+          className="text-balance text-center text-4xl font-semibold tracking-tight text-zinc-50 sm:text-5xl"
         >
           Preguntas frecuentes
         </motion.h2>
