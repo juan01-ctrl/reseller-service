@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ImportaFlow — premium unified design system */
+/* Resellix — premium unified design system */
 @layer components {
   .if-container {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;

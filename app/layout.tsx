@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ImportaFlow — Web profesional + IA para importadores Apple",
+  title: "Resellix — Web profesional + IA para importadores Apple",
   description:
     "Creamos tu web y un asistente con IA que responde WhatsApp y consultas 24/7. Para importadores y revendedores Apple en Argentina.",
 };

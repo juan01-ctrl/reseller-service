@@ -55,11 +55,10 @@ export function Solution() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.04, ease: easeOut }}
-            className="if-after-section-eyebrow if-h2 max-w-[13ch]"
+            className="if-after-section-eyebrow if-h2 flex max-w-3xl flex-col gap-1.5 sm:gap-2"
           >
-            Convertís mejor
-            <br />
-            <span className="text-zinc-400">sin sumar carga operativa.</span>
+            <span className="block text-zinc-50">Convertís mejor</span>
+            <span className="block text-zinc-400">sin sumar carga operativa.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}

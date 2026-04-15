@@ -59,7 +59,7 @@ export function Hero() {
               className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-4 py-1.5 if-eyebrow text-zinc-400"
             >
               <Sparkles className="h-3.5 w-3.5 text-blue-400" />
-              ImportaFlow
+              Resellix
             </motion.div>
 
             <motion.h1

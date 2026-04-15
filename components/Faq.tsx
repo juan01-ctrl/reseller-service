@@ -56,7 +56,7 @@ export function Faq() {
           transition={{ duration: 0.45, delay: 0.05 }}
           className="if-after-h2-lead mx-auto max-w-[44ch] text-center if-lead"
         >
-          Respuestas claras para decidir rápido si ImportaFlow encaja con tu operación.
+          Respuestas claras para decidir rápido si Resellix encaja con tu operación.
         </motion.p>
 
         <div className="mt-12 mx-auto max-w-3xl space-y-3">
