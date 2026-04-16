@@ -1,13 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { CtaButtons } from "@/components/CtaButtons";
 import { easeOut } from "@/lib/motion";
+import { HeroPanelFeatured, HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
 const setup = ["Web profesional", "Configuración del asistente IA", "Carga inicial de productos"];
 
-const monthly = ["Hosting", "Soporte", "Cambios pequeños", "Asistente 24/7"];
+const monthly = ["Hosting", "Soporte continuo", "Cambios pequeños", "Asistente 24/7"];
+
+const conditions = ["Sin permanencia obligatoria", "Soporte humano incluido", "Escalable según catálogo"];
 
 export function Pricing() {
   return (
@@ -15,61 +18,64 @@ export function Pricing() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-10%,rgba(59,130,246,0.1),transparent_55%)]" />
 
       <div className="relative if-container">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.55, ease: easeOut }}
-          className="if-eyebrow text-center"
-        >
+        <HeroReveal className="if-eyebrow text-center" margin="-120px" duration={0.55}>
           Inversión
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.65, ease: easeOut }}
-          className="if-after-section-eyebrow if-h2 text-center"
-        >
-          Una inversión que se paga sola
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.55, delay: 0.06, ease: easeOut }}
-          className="if-after-h2-lead mx-auto max-w-[46ch] text-center if-lead"
-        >
-          Estructura simple: un setup inicial y un mantenimiento mensual para sostener resultados.
-        </motion.p>
+        </HeroReveal>
+        <HeroReveal className="if-after-section-eyebrow if-h2 text-center" y={16} margin="-120px" duration={0.65}>
+          Un plan simple para crecer
+        </HeroReveal>
+        <HeroReveal className="if-after-h2-lead mx-auto max-w-[54ch] text-center if-lead" delay={0.06} margin="-120px">
+          Lanzas con un setup inicial y después sostenés resultados con una cuota mensual baja.
+        </HeroReveal>
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)_minmax(0,0.9fr)]">
-          <PricingCard title="Setup inicial" price="Desde USD 390" items={setup} highlight={false} />
+        <HeroReveal className="mt-14" y={24} duration={0.6} margin="-80px">
+          <HeroPanelFeatured className="p-8 sm:p-10 lg:p-12">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300/90">Plan Resellix</p>
+                <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
+                  Desde USD 390 + USD 49/mes
+                </h3>
+                <p className="mt-4 max-w-[44ch] text-sm leading-relaxed text-zinc-300">
+                  Estructura pensada para que recuperes inversión rápido y mantengas una operación estable.
+                </p>
 
-          <PricingCard
-            className="scale-[1.01] lg:scale-[1.05]"
-            title="Mantenimiento mensual"
-            price="Desde USD 49/mes"
-            items={monthly}
-            highlight
-          />
+                <div className="mt-8 flex items-center gap-3">
+                  <HeroPanelMuted className="px-4 py-3">
+                    <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">Hoy</p>
+                    <p className="mt-1.5 text-sm font-semibold text-zinc-100">Setup inicial</p>
+                    <p className="mt-1 text-xs text-zinc-400">Desde USD 390</p>
+                  </HeroPanelMuted>
+                  <ArrowRight className="h-4 w-4 text-zinc-500" />
+                  <HeroPanelMuted className="px-4 py-3">
+                    <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">Luego</p>
+                    <p className="mt-1.5 text-sm font-semibold text-zinc-100">Mantenimiento</p>
+                    <p className="mt-1 text-xs text-zinc-400">Desde USD 49/mes</p>
+                  </HeroPanelMuted>
+                </div>
+              </div>
 
-          <motion.aside
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.08, ease: easeOut }}
-            className="if-panel-muted p-7"
-          >
-            <p className="if-eyebrow">ROI</p>
-            <p className="mt-4 text-2xl font-semibold leading-tight text-zinc-100">1 venta extra por mes</p>
-            <p className="mt-2 text-sm text-zinc-400">cubre completamente el servicio mensual.</p>
-            <div className="mt-8 space-y-3 text-sm text-zinc-300">
-              <div className="if-panel-muted px-4 py-3">Sin permanencia obligatoria</div>
-              <div className="if-panel-muted px-4 py-3">Soporte humano incluido</div>
+              <HeroPanelMuted className="p-6">
+                <p className="if-eyebrow">ROI estimado</p>
+                <p className="if-after-eyebrow text-3xl font-semibold leading-none text-zinc-100">1 cierre extra/mes</p>
+                <p className="if-after-title text-sm text-zinc-400">suele cubrir completamente el mantenimiento mensual.</p>
+              </HeroPanelMuted>
             </div>
-          </motion.aside>
-        </div>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              <PricingPhase title="Qué incluye el setup" items={setup} />
+              <PricingPhase title="Qué incluye cada mes" items={monthly} />
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2 border-t border-white/[0.08] pt-6">
+              {conditions.map((item) => (
+                <span key={item} className="rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1.5 text-[11px] text-zinc-300">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </HeroPanelFeatured>
+        </HeroReveal>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -85,69 +91,20 @@ export function Pricing() {
   );
 }
 
-function PricingCard({
-  title,
-  price,
-  items,
-  highlight,
-  className = "",
-}: {
-  title: string;
-  price: string;
-  items: string[];
-  highlight: boolean;
-  className?: string;
-}) {
+function PricingPhase({ title, items }: { title: string; items: string[] }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: easeOut }}
-      whileHover={{ y: highlight ? -6 : -3 }}
-      className={`relative overflow-hidden ${className} ${highlight ? "if-panel-featured p-10 sm:p-12" : "if-panel p-8 sm:p-9"}`}
-    >
-      {highlight && (
-        <div className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-blue-500/22 blur-3xl" />
-      )}
-
-      <p
-        className={`relative text-[11px] font-semibold uppercase tracking-[0.18em] ${
-          highlight ? "text-blue-300/90" : "text-zinc-500"
-        }`}
-      >
-        {highlight ? "Recomendado" : "Base"}
-      </p>
-
-      <div className="relative mt-2">
-        <h3 className={`font-medium ${highlight ? "text-zinc-300" : "text-zinc-500"}`}>{title}</h3>
-        <p
-          className={`mt-8 font-semibold tracking-tight text-zinc-50 ${
-            highlight ? "text-5xl sm:text-6xl" : "text-3xl sm:text-4xl"
-          }`}
-        >
-          {price}
-        </p>
-        <ul className={`space-y-4 ${highlight ? "mt-12" : "mt-10"}`}>
-          {items.map((item) => (
-            <li
-              key={item}
-              className={`flex items-start gap-3 leading-snug ${
-                highlight ? "text-[15px] text-zinc-300" : "text-[14px] text-zinc-400"
-              }`}
-            >
-              <span
-                className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full ${
-                  highlight ? "bg-blue-500/20 text-blue-200" : "bg-white/[0.06] text-zinc-400"
-                }`}
-              >
-                <Check className="h-2.5 w-2.5" aria-hidden />
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
+    <HeroPanelMuted className="p-5 sm:p-6">
+      <p className="text-sm font-semibold text-zinc-100">{title}</p>
+      <ul className="mt-4 space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-3 text-[14px] leading-snug text-zinc-300">
+            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-200">
+              <Check className="h-2.5 w-2.5" aria-hidden />
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </HeroPanelMuted>
   );
 }

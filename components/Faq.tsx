@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { HeroPanel, HeroReveal } from "@/components/ui/hero";
 
 const faqs = [
   {
@@ -31,33 +32,15 @@ export function Faq() {
   return (
     <section className="if-section">
       <div className="if-container">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45 }}
-          className="if-eyebrow text-center"
-        >
+        <HeroReveal className="if-eyebrow text-center" duration={0.45} margin="-80px">
           FAQ
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45 }}
-          className="if-after-section-eyebrow if-h2 text-balance text-center"
-        >
+        </HeroReveal>
+        <HeroReveal className="if-after-section-eyebrow if-h2 text-balance text-center" duration={0.45} margin="-80px">
           Preguntas frecuentes
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45, delay: 0.05 }}
-          className="if-after-h2-lead mx-auto max-w-[44ch] text-center if-lead"
-        >
+        </HeroReveal>
+        <HeroReveal className="if-after-h2-lead mx-auto max-w-[44ch] text-center if-lead" duration={0.45} delay={0.05} margin="-80px">
           Respuestas claras para decidir rápido si Resellix encaja con tu operación.
-        </motion.p>
+        </HeroReveal>
 
         <div className="mt-12 mx-auto max-w-3xl space-y-3">
           {faqs.map((item, i) => (
@@ -84,9 +67,10 @@ function FaqItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: 0.04 * index, duration: 0.4 }}
-      className="if-surface-static overflow-hidden transition hover:border-white/[0.1]"
+      className="overflow-hidden transition hover:border-white/[0.1]"
     >
-      <button
+      <HeroPanel className="overflow-hidden">
+        <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
@@ -100,7 +84,7 @@ function FaqItem({
           <ChevronDown className="h-5 w-5" aria-hidden />
         </motion.span>
       </button>
-      <AnimatePresence initial={false}>
+        <AnimatePresence initial={false}>
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
@@ -113,7 +97,8 @@ function FaqItem({
             </p>
           </motion.div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>
+      </HeroPanel>
     </motion.div>
   );
 }

@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Bot, Globe2, MessageCircle, MousePointer2 } from "lucide-react";
 import { useRef } from "react";
 import { easeOut } from "@/lib/motion";
+import { HeroPanelFeatured, HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
 const valueCards = [
   {
@@ -41,41 +42,23 @@ export function Solution() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_15%_30%,rgba(59,130,246,0.08),transparent_55%)]" />
       <div className="relative if-container">
         <div className="mx-auto max-w-[62rem]">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.55, ease: easeOut }}
-            className="if-eyebrow"
-          >
+          <HeroReveal className="if-eyebrow" margin="-100px" duration={0.55}>
             Solución
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.04, ease: easeOut }}
+          </HeroReveal>
+          <HeroReveal
             className="if-after-section-eyebrow if-h2 flex max-w-3xl flex-col gap-1.5 sm:gap-2"
+            y={18}
+            delay={0.04}
+            margin="-100px"
+            duration={0.6}
           >
             <span className="block text-zinc-50">Convertís mejor</span>
             <span className="block text-zinc-400">sin sumar carga operativa.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.55, delay: 0.08, ease: easeOut }}
-            className="if-after-h2-lead max-w-[44ch] if-lead"
-          >
+          </HeroReveal>
+          <HeroReveal className="if-after-h2-lead max-w-[44ch] if-lead" delay={0.08} margin="-100px">
             Unificamos web y asistente IA para que cada consulta tenga respuesta clara y orientada a cierre.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.55, delay: 0.12, ease: easeOut }}
-            className="mt-8 space-y-4"
-          >
+          </HeroReveal>
+          <HeroReveal className="mt-8 space-y-4" delay={0.12} margin="-100px">
             {valueCards
               .filter((card) => card.featured)
               .map((card, i) => {
@@ -86,10 +69,11 @@ export function Solution() {
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
-                  transition={{ delay: 0.05 * i, duration: 0.5, ease: easeOut }}
-                  className="if-panel-featured p-6 sm:p-7"
-                >
-                  <div className="flex items-start gap-3.5">
+                    transition={{ delay: 0.05 * i, duration: 0.5, ease: easeOut }}
+                    className=""
+                  >
+                    <HeroPanelFeatured className="h-full p-6 sm:p-7">
+                      <div className="flex items-start gap-3.5">
                       <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-blue-300/25 bg-blue-500/15 text-blue-100">
                         <Icon className="h-4.5 w-4.5" />
                       </div>
@@ -102,7 +86,8 @@ export function Solution() {
                         </h3>
                         <p className="mt-2 max-w-[44ch] text-sm leading-relaxed text-zinc-300">{card.body}</p>
                       </div>
-                    </div>
+                      </div>
+                    </HeroPanelFeatured>
                   </motion.article>
                 );
               })}
@@ -119,9 +104,10 @@ export function Solution() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-80px" }}
                       transition={{ delay: 0.05 * (i + 1), duration: 0.5, ease: easeOut }}
-                      className="if-panel-muted p-5 sm:p-6"
+                      className=""
                     >
-                      <div className="flex items-start gap-3">
+                      <HeroPanelMuted className="h-full p-5 sm:p-6">
+                        <div className="flex items-start gap-3">
                         <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.12] bg-white/[0.05] text-zinc-300">
                           <Icon className="h-4 w-4" />
                         </div>
@@ -135,11 +121,12 @@ export function Solution() {
                           <p className="mt-2 text-sm leading-relaxed text-zinc-400">{card.body}</p>
                         </div>
                       </div>
+                      </HeroPanelMuted>
                     </motion.article>
                   );
                 })}
             </div>
-          </motion.div>
+          </HeroReveal>
         </div>
 
         <div className="if-after-heading-block">
@@ -254,13 +241,13 @@ function SolutionScene() {
 
       <div className="relative z-[2] mx-auto mt-5 grid max-w-[680px] grid-cols-3 gap-2.5">
         {proofStats.map((item) => (
-          <div
+          <HeroPanelMuted
             key={item.label}
-            className="if-panel-muted px-3 py-2.5 text-center"
+            className="px-3 py-2.5 text-center"
           >
             <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">{item.label}</p>
             <p className="mt-1.5 text-sm font-semibold text-zinc-200 sm:text-base">{item.value}</p>
-          </div>
+          </HeroPanelMuted>
         ))}
       </div>
     </motion.div>

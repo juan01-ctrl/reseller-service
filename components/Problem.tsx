@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { easeOut } from "@/lib/motion";
+import { HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
 const costItems = ["Sin web clara", "Preguntas repetidas", "Clientes que se enfrían"];
 
@@ -11,24 +12,12 @@ export function Problem() {
     <section className="if-section">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-20%,rgba(59,130,246,0.06),transparent_55%)]" />
       <div className="relative if-container">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.55, ease: easeOut }}
-          className="if-eyebrow"
-        >
+        <HeroReveal className="if-eyebrow" margin="-120px" duration={0.55}>
           Problema
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.65, ease: easeOut }}
-          className="if-after-section-eyebrow if-h2 max-w-[18ch]"
-        >
+        </HeroReveal>
+        <HeroReveal className="if-after-section-eyebrow if-h2 max-w-[18ch]" y={20} margin="-120px" duration={0.65}>
           La mayoría de los importadores pierde ventas todos los días
-        </motion.h2>
+        </HeroReveal>
 
         <div className="if-after-heading-block grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <motion.article
@@ -96,9 +85,9 @@ export function Problem() {
 
             <div className="if-before-media space-y-3">
               {costItems.map((item) => (
-                <div key={item} className="if-panel-muted px-4 py-3 text-sm text-zinc-300">
+                <HeroPanelMuted key={item} className="px-4 py-3 text-sm text-zinc-300">
                   {item}
-                </div>
+                </HeroPanelMuted>
               ))}
             </div>
           </motion.aside>

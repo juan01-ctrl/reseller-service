@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { easeOut } from "@/lib/motion";
+import { HeroPanel, HeroPanelFeatured, HeroReveal } from "@/components/ui/hero";
 
 const steps = [
   {
@@ -30,24 +31,12 @@ export function HowItWorks() {
     <section className="if-section bg-[#040506]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(59,130,246,0.08),transparent_55%)]" />
       <div className="relative if-container">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.55, ease: easeOut }}
-          className="if-eyebrow"
-        >
+        <HeroReveal className="if-eyebrow" margin="-120px" duration={0.55}>
           Proceso
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.65, ease: easeOut }}
-          className="if-after-section-eyebrow if-h2 max-w-[20ch]"
-        >
+        </HeroReveal>
+        <HeroReveal className="if-after-section-eyebrow if-h2 max-w-[20ch]" y={16} margin="-120px" duration={0.65}>
           Implementación premium en tres pasos
-        </motion.h2>
+        </HeroReveal>
 
         <div className="relative if-after-heading-block">
           <div
@@ -143,25 +132,28 @@ function StepVisual({
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 380, damping: 28 }}
-        className="if-panel p-6 shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)] sm:p-7"
+        className="shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)]"
       >
-        <p className="if-eyebrow text-zinc-500">Catálogo</p>
-        <div className="if-before-media rounded-xl border border-white/[0.07] bg-white/[0.04] p-5">
-          <p className="text-base font-semibold text-white">iPhone 16 Pro</p>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-500">256 GB · Titanio · USD 1.349</p>
-        </div>
+        <HeroPanel className="h-full p-6 sm:p-7">
+          <p className="if-eyebrow text-zinc-500">Catálogo</p>
+          <div className="if-before-media rounded-xl border border-white/[0.07] bg-white/[0.04] p-5">
+            <p className="text-base font-semibold text-white">iPhone 16 Pro</p>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-500">256 GB · Titanio · USD 1.349</p>
+          </div>
+        </HeroPanel>
       </motion.div>
     );
   }
 
   if (type === "setup") {
+    const Wrapper = featured ? HeroPanelFeatured : HeroPanel;
     return (
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 380, damping: 28 }}
-        className={`${featured ? "if-panel-featured" : "if-panel"} p-[1px]`}
+        className=""
       >
-        <div className="rounded-[calc(2rem-1px)] bg-[#07080c] p-6 sm:p-7">
+        <Wrapper className="rounded-[calc(2rem-1px)] bg-[#07080c] p-6 sm:p-7">
           <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
             <span className="text-[11px] text-zinc-500">Web + IA</span>
             <ArrowUpRight className="h-4 w-4 text-zinc-600" />
@@ -175,7 +167,7 @@ function StepVisual({
               WhatsApp
             </div>
           </div>
-        </div>
+        </Wrapper>
       </motion.div>
     );
   }
@@ -184,24 +176,26 @@ function StepVisual({
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 380, damping: 28 }}
-      className="if-panel p-6 shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)] sm:p-7"
+      className="shadow-[0_60px_140px_-70px_rgba(0,0,0,0.9)]"
     >
-      <p className="if-eyebrow text-zinc-500">Métricas</p>
-      <div className="if-before-media grid grid-cols-3 gap-3">
-        {[
-          { k: "+18", sub: "consultas" },
-          { k: "3", sub: "cierres" },
-          { k: "24/7", sub: "activo" },
-        ].map((m) => (
-          <div
-            key={m.k}
-            className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-2 py-4 text-center"
-          >
-            <p className="text-sm font-semibold leading-tight text-zinc-100 sm:text-base">{m.k}</p>
-            <p className="mt-1 text-[9px] uppercase tracking-wider text-zinc-600">{m.sub}</p>
-          </div>
-        ))}
-      </div>
+      <HeroPanel className="h-full p-6 sm:p-7">
+        <p className="if-eyebrow text-zinc-500">Métricas</p>
+        <div className="if-before-media grid grid-cols-3 gap-3">
+          {[
+            { k: "+18", sub: "consultas" },
+            { k: "3", sub: "cierres" },
+            { k: "24/7", sub: "activo" },
+          ].map((m) => (
+            <div
+              key={m.k}
+              className="rounded-xl border border-white/[0.06] bg-white/[0.04] px-2 py-4 text-center"
+            >
+              <p className="text-sm font-semibold leading-tight text-zinc-100 sm:text-base">{m.k}</p>
+              <p className="mt-1 text-[9px] uppercase tracking-wider text-zinc-600">{m.sub}</p>
+            </div>
+          ))}
+        </div>
+      </HeroPanel>
     </motion.div>
   );
 }
