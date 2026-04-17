@@ -14,7 +14,7 @@ const conditions = ["Sin permanencia obligatoria", "Soporte humano incluido", "E
 
 export function Pricing() {
   return (
-    <section id="agendar-demo" className="if-section scroll-mt-36 border-t border-white/[0.06] bg-[#040506]">
+    <section id="precios" className="if-section scroll-mt-36 border-t border-white/[0.06] bg-[#040506]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-10%,rgba(59,130,246,0.1),transparent_55%)]" />
 
       <div className="relative if-container">
@@ -34,7 +34,7 @@ export function Pricing() {
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300/90">Plan Resellix</p>
                 <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
-                  Desde USD 390 + USD 49/mes
+                  Desde USD 450 + USD 49/mes
                 </h3>
                 <p className="mt-4 max-w-[44ch] text-sm leading-relaxed text-zinc-300">
                   Estructura pensada para que recuperes inversión rápido y mantengas una operación estable.
@@ -44,7 +44,7 @@ export function Pricing() {
                   <HeroPanelMuted className="px-4 py-3">
                     <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">Hoy</p>
                     <p className="mt-1.5 text-sm font-semibold text-zinc-100">Setup inicial</p>
-                    <p className="mt-1 text-xs text-zinc-400">Desde USD 390</p>
+                    <p className="mt-1 text-xs text-zinc-400">Desde USD 450</p>
                   </HeroPanelMuted>
                   <ArrowRight className="h-4 w-4 text-zinc-500" />
                   <HeroPanelMuted className="px-4 py-3">

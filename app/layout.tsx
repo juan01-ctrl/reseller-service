@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { defaultDescription, getSiteUrl, siteName } from "@/lib/site";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -9,10 +10,79 @@ const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const baseUrl = getSiteUrl();
+const pageTitle = `${siteName} — Web + IA para importadores Apple`;
+
 export const metadata: Metadata = {
-  title: "Resellix — Web profesional + IA para importadores Apple",
-  description:
-    "Creamos tu web y un asistente con IA que responde WhatsApp y consultas 24/7. Para importadores y revendedores Apple en Argentina.",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: pageTitle,
+    template: `%s · ${siteName}`,
+  },
+  description: defaultDescription,
+  applicationName: siteName,
+  authors: [{ name: siteName, url: baseUrl }],
+  creator: siteName,
+  publisher: siteName,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: true,
+  },
+  keywords: [
+    "Resellix",
+    "importadores Apple",
+    "Argentina",
+    "WhatsApp Business",
+    "asistente IA",
+    "catálogo web",
+    "iPhone",
+    "revendedores",
+    "automatización ventas",
+  ],
+  category: "business",
+  classification: "Business",
+  referrer: "origin-when-cross-origin",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "es-AR": "/",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    url: baseUrl,
+    siteName,
+    title: pageTitle,
+    description: defaultDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: pageTitle,
+    description: defaultDescription,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#040508" },
+    { media: "(prefers-color-scheme: light)", color: "#040508" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

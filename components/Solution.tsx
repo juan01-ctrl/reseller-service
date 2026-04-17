@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Bot, Globe2, MessageCircle, MousePointer2 } from "lucide-react";
 import { useRef } from "react";
 import { easeOut } from "@/lib/motion";
+import { whatsappHref } from "@/lib/links";
 import { ProductDeviceImage } from "@/components/ui/product-device-image";
 import { HeroPanelFeatured, HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
@@ -213,12 +215,14 @@ function SolutionScene() {
                       <p className="mt-5 text-base font-semibold text-zinc-100 sm:text-lg">USD 1.349</p>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="mt-6 w-full rounded-full bg-blue-500/25 py-3 text-[12px] font-semibold text-blue-100 ring-1 ring-blue-400/25 transition hover:bg-blue-500/35"
+                  <Link
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 flex w-full items-center justify-center rounded-full bg-blue-500/25 py-3 text-[12px] font-semibold text-blue-100 ring-1 ring-blue-400/25 transition hover:bg-blue-500/35"
                   >
                     Consultar por WhatsApp
-                  </button>
+                  </Link>
                 </motion.div>
               </div>
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-/** Catálogo demo — reemplazá `/public/images/iphone-16-pro-catalog.jpg` por fotos propias del negocio. */
+/** Catálogo de ejemplo — reemplazá la imagen en `/public/images/` por fotos propias del negocio. */
 const CATALOG_SRC = "/images/iphone-16-pro-catalog.webp";
 
 type ProductDeviceImageProps = {

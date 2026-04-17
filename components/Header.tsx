@@ -18,7 +18,7 @@ export function Header() {
           <BrandLockup />
         </Link>
         <div className="flex shrink-0 items-center gap-2">
-          <CtaButtons className="!flex-row !gap-2 [&_a]:px-4 [&_a]:py-2 [&_a]:text-xs sm:[&_a]:px-6 sm:[&_a]:py-3 sm:[&_a]:text-sm [&_a:last-child]:hidden md:[&_a:last-child]:inline-flex" />
+          <CtaButtons className="!flex-row !gap-2 [&_a]:px-4 [&_a]:py-2 [&_a]:text-xs sm:[&_a]:px-6 sm:[&_a]:py-3 sm:[&_a]:text-sm" />
         </div>
       </div>
     </motion.header>
