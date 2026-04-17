@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Bot, Globe2, MessageCircle, MousePointer2 } from "lucide-react";
 import { useRef } from "react";
 import { easeOut } from "@/lib/motion";
+import { ProductDeviceImage } from "@/components/ui/product-device-image";
 import { HeroPanelFeatured, HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
 const valueCards = [
@@ -194,7 +195,10 @@ function SolutionScene() {
                     <MousePointer2 className="h-3.5 w-3.5" aria-hidden />
                   </div>
                   <div className="flex gap-4">
-                    <div className="h-28 w-20 shrink-0 rounded-xl bg-gradient-to-br from-zinc-600/40 to-zinc-950 ring-1 ring-white/10 sm:h-32 sm:w-24" />
+                    <ProductDeviceImage
+                      alt="iPhone 16 Pro"
+                      className="w-24 sm:w-28"
+                    />
                     <div className="min-w-0 pt-0.5">
                       <p className="text-lg font-semibold text-white sm:text-xl">iPhone 16 Pro</p>
                       <p className="mt-1 text-[12px] text-zinc-500">256 GB · Titanio</p>

@@ -58,7 +58,7 @@ export function Pricing() {
               <HeroPanelMuted className="p-6">
                 <p className="if-eyebrow">ROI estimado</p>
                 <p className="if-after-eyebrow text-3xl font-semibold leading-none text-zinc-100">1 cierre extra/mes</p>
-                <p className="if-after-title text-sm text-zinc-400">suele cubrir completamente el mantenimiento mensual.</p>
+                <p className="if-after-title text-sm text-zinc-400">cubre completamente el mantenimiento mensual.</p>
               </HeroPanelMuted>
             </div>
 

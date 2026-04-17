@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { easeOut } from "@/lib/motion";
+import { ProductDeviceImage } from "@/components/ui/product-device-image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -198,7 +199,10 @@ export function HeroBrowserMockup() {
                 </span>
               </div>
             </div>
-            <div className="aspect-[4/5] w-28 shrink-0 rounded-xl bg-gradient-to-br from-zinc-600/40 via-zinc-800 to-zinc-950 ring-1 ring-white/10 sm:w-32" />
+            <ProductDeviceImage
+              alt="iPhone 16 Pro — Titanio natural"
+              className="w-28 sm:w-32"
+            />
           </div>
           <div className="mt-8 flex flex-wrap gap-2 border-t border-white/[0.06] pt-6">
             <span className="rounded-full bg-blue-500/15 px-3 py-1.5 text-[11px] font-medium text-blue-100 ring-1 ring-blue-400/20">
@@ -232,10 +236,13 @@ export function HeroWhatsAppMockup() {
           ¿Tenés 16 Pro 256 titanio?
         </div>
         <div className="mr-auto max-w-[94%] rounded-2xl rounded-tl-md bg-[#202c33] px-3 py-2 text-[12px] leading-snug text-zinc-100">
-          Sí, stock disponible. USD 1.349 por transferencia o en cuotas. ¿Reservamos?
+          Sí, hay stock. USD 1.349 por transferencia o en cuotas. ¿Querés que lo reserve?
         </div>
         <div className="ml-auto max-w-[94%] rounded-2xl rounded-tr-md bg-[#005c4b] px-3 py-2 text-[12px] leading-snug text-white/95">
-          Reserva hecha. Te paso los datos.
+          Dale, reservámelo.
+        </div>
+        <div className="mr-auto max-w-[94%] rounded-2xl rounded-tl-md bg-[#202c33] px-3 py-2 text-[12px] leading-snug text-zinc-100">
+          Listo, reservado. Te paso los datos para la transferencia.
         </div>
       </div>
     </div>

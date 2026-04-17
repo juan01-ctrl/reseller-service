@@ -52,7 +52,7 @@ export function ExampleChat() {
                 Dale, reservame uno. ¿Puedo pagar transferencia?
               </Bubble>
               <Bubble side="in" time="15:42">
-                Perfecto. Te paso datos y dejamos el equipo reservado ahora.
+                Sí, podés pagar por transferencia. Te paso los datos ahora y dejamos el equipo reservado.
               </Bubble>
             </div>
 
