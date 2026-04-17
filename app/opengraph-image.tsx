@@ -38,11 +38,44 @@ export default function OpenGraphImage() {
               height: 88,
               borderRadius: 22,
               background:
-                "linear-gradient(145deg, #14326E 0%, #0A1631 45%, #070B16 100%)",
-              border: "1px solid rgba(154,190,255,0.35)",
+                "linear-gradient(145deg, #0F2A5C 0%, #081428 50%, #050910 100%)",
+              border: "1px solid rgba(148,196,255,0.35)",
               boxShadow: "0 0 40px rgba(59,130,246,0.25)",
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "center",
+              gap: 7,
+              paddingBottom: 15,
+              paddingLeft: 17,
+              paddingRight: 17,
+              boxSizing: "border-box",
             }}
-          />
+          >
+            <div
+              style={{
+                width: 13,
+                height: 24,
+                borderRadius: 5,
+                background: "linear-gradient(180deg, #F4F7FF, #A8C4FF)",
+              }}
+            />
+            <div
+              style={{
+                width: 13,
+                height: 36,
+                borderRadius: 5,
+                background: "linear-gradient(180deg, #F4F7FF, #A8C4FF)",
+              }}
+            />
+            <div
+              style={{
+                width: 13,
+                height: 48,
+                borderRadius: 5,
+                background: "linear-gradient(180deg, #FFFFFF, #6EE7D8)",
+              }}
+            />
+          </div>
           <span
             style={{
               fontSize: 56,

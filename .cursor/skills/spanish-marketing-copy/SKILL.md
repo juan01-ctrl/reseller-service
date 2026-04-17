@@ -1,9 +1,9 @@
 ---
 name: spanish-marketing-copy
-description: Generate concise, premium copy in Argentine Spanish for the ImportaFlow SaaS landing (headlines, benefits, CTAs).
+description: Generate concise, premium copy in Argentine Spanish for the ImportBoost SaaS landing (headlines, benefits, CTAs).
 ---
 
-# Marketing copy in Spanish (ImportaFlow)
+# Marketing copy in Spanish (ImportBoost)
 
 ## When to use
 

@@ -39,7 +39,7 @@ export function Faq() {
           Preguntas frecuentes
         </HeroReveal>
         <HeroReveal className="if-after-h2-lead mx-auto max-w-[44ch] text-center if-lead" duration={0.45} delay={0.05} margin="-80px">
-          Respuestas claras para decidir rápido si Resellix encaja con tu operación.
+          Respuestas claras para decidir rápido si ImportBoost encaja con tu operación.
         </HeroReveal>
 
         <div className="mt-12 mx-auto max-w-3xl space-y-3">

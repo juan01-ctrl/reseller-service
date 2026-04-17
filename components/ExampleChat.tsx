@@ -36,7 +36,7 @@ export function ExampleChat() {
                 <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#1f2c33] bg-emerald-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">Asistente Resellix</p>
+                <p className="text-sm font-semibold text-white">Asistente ImportBoost</p>
                 <p className="text-[11px] text-emerald-400/95">en línea</p>
               </div>
             </div>

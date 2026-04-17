@@ -15,6 +15,10 @@ const pageTitle = `${siteName} — Web + IA para importadores Apple`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
   title: {
     default: pageTitle,
     template: `%s · ${siteName}`,
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
     telephone: true,
   },
   keywords: [
-    "Resellix",
+    "ImportBoost",
     "importadores Apple",
     "Argentina",
     "WhatsApp Business",

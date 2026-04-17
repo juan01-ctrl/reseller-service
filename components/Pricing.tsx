@@ -32,7 +32,7 @@ export function Pricing() {
           <HeroPanelFeatured className="p-8 sm:p-10 lg:p-12">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300/90">Plan Resellix</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300/90">Plan ImportBoost</p>
                 <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl">
                   Desde USD 450 + USD 49/mes
                 </h3>

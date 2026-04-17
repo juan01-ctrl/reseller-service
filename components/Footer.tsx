@@ -7,7 +7,7 @@ export function Footer() {
       <div className="if-container flex flex-col gap-6 py-12 sm:flex-row sm:items-center sm:justify-between">
         <BrandLockup />
         <p className="text-xs text-zinc-500">
-          © {new Date().getFullYear()} Resellix. Hecho para importadores y
+          © {new Date().getFullYear()} ImportBoost. Hecho para importadores y
           revendedores Apple en Argentina.
         </p>
         <Link

@@ -8,7 +8,7 @@ export function getSiteUrl(): string {
   return "http://localhost:3000";
 }
 
-export const siteName = "Resellix";
+export const siteName = "ImportBoost";
 
 export const defaultDescription =
   "Web profesional y asistente con IA para WhatsApp: respuestas al instante, 24/7. Para importadores y revendedores Apple en Argentina.";

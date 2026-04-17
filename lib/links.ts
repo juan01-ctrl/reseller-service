@@ -1,5 +1,5 @@
 const defaultWhatsappMessage =
-  "Hola%2C%20quiero%20info%20sobre%20Resellix";
+  "Hola%2C%20quiero%20info%20sobre%20ImportBoost";
 
 /** Enlace wa.me (sin +). Override con NEXT_PUBLIC_WHATSAPP_URL si hace falta. */
 export const whatsappHref =

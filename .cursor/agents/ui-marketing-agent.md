@@ -6,7 +6,7 @@ ui-marketing-agent
 
 ## description
 
-Sub-agent focused solely on **copy**, **messaging**, **CTAs**, and **section structure** to maximize clarity and conversion for ImportaFlow. It does not implement UI or code.
+Sub-agent focused solely on **copy**, **messaging**, **CTAs**, and **section structure** to maximize clarity and conversion for ImportBoost. It does not implement UI or code.
 
 ## when_to_delegate
 
