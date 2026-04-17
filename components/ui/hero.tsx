@@ -76,7 +76,7 @@ export function HeroPanelFeatured({
 
 export function HeroSection({ children }: { children: React.ReactNode }) {
   return (
-    <section className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32 lg:pt-44 lg:pb-36">
+    <section className="relative overflow-hidden pt-24 pb-24 sm:pt-28 sm:pb-32 lg:pt-32 lg:pb-36">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,16,1)_0%,rgba(6,8,13,1)_55%,rgba(4,5,8,1)_100%)]" />
       <div className="pointer-events-none absolute -left-36 top-20 h-[30rem] w-[30rem] rounded-full bg-blue-600/16 blur-[130px]" />
       <div className="pointer-events-none absolute right-[-18%] top-1/3 h-[28rem] w-[28rem] rounded-full bg-indigo-600/10 blur-[120px]" />
