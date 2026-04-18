@@ -7,8 +7,8 @@ import { HeroPanel, HeroReveal } from "@/components/ui/hero";
 
 const faqs = [
   {
-    q: "¿El asistente responde WhatsApp?",
-    a: "Sí. Configuramos respuestas automáticas para WhatsApp y también para mensajes desde tu web, con el mismo criterio y tono.",
+    q: "¿El asistente cubre WhatsApp e Instagram?",
+    a: "Sí. Configuramos respuestas automáticas para WhatsApp y para mensajes directos de Instagram, además del chat de tu web, con el mismo criterio y tono.",
   },
   {
     q: "¿Puedo cambiar precios o stock?",

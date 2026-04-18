@@ -49,7 +49,7 @@ export function Hero() {
               variants={heroMotion.fadeUp}
               className="if-after-h2-lead max-w-[30ch] if-lead"
             >
-              Web premium y asistente con IA que responde WhatsApp en segundos, 24/7.
+              Web premium y automatización con IA que responde WhatsApp e Instagram en segundos, 24/7.
             </motion.p>
 
             <motion.div

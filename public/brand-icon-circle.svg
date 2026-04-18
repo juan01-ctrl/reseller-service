@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <title>ImportBoost marca circular redes</title>
+  <defs>
+    <clipPath id="ibCircClip"><circle cx="20" cy="20" r="20"/></clipPath>
+    <linearGradient id="ib-bg" x1="6" y1="4" x2="34" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2A5C"/>
+      <stop offset="0.5" stop-color="#081428"/>
+      <stop offset="1" stop-color="#050910"/>
+    </linearGradient>
+    <radialGradient id="ib-soft-light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10 8) rotate(34) scale(30 26)">
+      <stop stop-color="#5EEAD4" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#5EEAD4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ib-stroke" x1="4" y1="2" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(148,196,255,0.55)"/>
+      <stop offset="1" stop-color="rgba(77,113,188,0.28)"/>
+    </linearGradient>
+    <linearGradient id="ib-bars" x1="10" y1="28" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7FF"/>
+      <stop offset="1" stop-color="#A8C4FF"/>
+    </linearGradient>
+    <linearGradient id="ib-bars-strong" x1="26" y1="31" x2="30" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#6EE7D8"/>
+    </linearGradient>
+    <linearGradient id="ib-arrow" x1="11" y1="12" x2="17" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93C5FD"/>
+      <stop offset="1" stop-color="#5EEAD4"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#ibCircClip)">
+    <rect width="40" height="40" fill="url(#ib-bg)"/>
+    <rect width="40" height="40" fill="url(#ib-soft-light)"/>
+    <rect x="9" y="22" width="5.5" height="9" rx="1.6" fill="url(#ib-bars)"/>
+    <rect x="17.25" y="16" width="5.5" height="15" rx="1.6" fill="url(#ib-bars)"/>
+    <rect x="25.5" y="10" width="5.5" height="21" rx="1.6" fill="url(#ib-bars-strong)"/>
+    <path d="M11 11.5L14 8.5L17 11.5" stroke="url(#ib-arrow)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="29.5" cy="11" r="1.15" fill="#7AE0C8" fill-opacity="0.55"/>
+  </g>
+  <circle cx="20" cy="20" r="19.35" fill="none" stroke="url(#ib-stroke)" stroke-width="0.65"/>
+</svg>

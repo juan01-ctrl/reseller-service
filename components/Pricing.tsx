@@ -6,7 +6,11 @@ import { CtaButtons } from "@/components/CtaButtons";
 import { easeOut } from "@/lib/motion";
 import { HeroPanelFeatured, HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
-const setup = ["Web profesional", "Configuración del asistente IA", "Carga inicial de productos"];
+const setup = [
+  "Web profesional",
+  "Automatización IA para WhatsApp e Instagram",
+  "Carga inicial de productos",
+];
 
 const monthly = ["Hosting", "Soporte continuo", "Cambios pequeños", "Asistente 24/7"];
 

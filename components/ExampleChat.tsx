@@ -17,7 +17,7 @@ export function ExampleChat() {
             <span className="text-zinc-400">que termina en reserva</span>
           </HeroReveal>
           <HeroReveal className="if-after-h2-lead if-lead" delay={0.05} margin="-120px">
-            Tono humano, respuestas claras y cierre con siguiente paso.
+            Mismo tono en WhatsApp e Instagram: respuestas claras y cierre con siguiente paso.
           </HeroReveal>
         </div>
 

@@ -14,14 +14,14 @@ export function ProductDeviceImage({
 }: ProductDeviceImageProps) {
   return (
     <div
-      className={`relative aspect-square shrink-0 overflow-hidden rounded-xl bg-zinc-900 ring-1 ring-white/10 ${className ?? ""}`}
+      className={`relative aspect-square shrink-0 self-start overflow-hidden rounded-xl bg-zinc-900 ring-1 ring-white/10 ${className ?? ""}`}
     >
       <Image
         src={CATALOG_SRC}
         alt={alt}
         fill
-        className="object-cover object-center"
         sizes="(max-width: 640px) 96px, 128px"
+        className="object-cover object-center"
       />
     </div>
   );

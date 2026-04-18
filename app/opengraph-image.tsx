@@ -3,7 +3,7 @@ import { defaultDescription, siteName } from "@/lib/site";
 
 export const runtime = "edge";
 
-export const alt = `${siteName} — Web + IA para importadores Apple`;
+export const alt = `${siteName} — Web + IA para WhatsApp e Instagram`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -97,7 +97,7 @@ export default function OpenGraphImage() {
             letterSpacing: -0.5,
           }}
         >
-          Web profesional + asistente IA para WhatsApp
+          Web profesional + automatización IA para WhatsApp e Instagram
         </div>
         <div
           style={{

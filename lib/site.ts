@@ -11,4 +11,4 @@ export function getSiteUrl(): string {
 export const siteName = "ImportBoost";
 
 export const defaultDescription =
-  "Web profesional y asistente con IA para WhatsApp: respuestas al instante, 24/7. Para importadores y revendedores Apple en Argentina.";
+  "Web profesional y automatización de mensajes con IA para WhatsApp e Instagram (DMs): respuestas al instante, 24/7. Para importadores y revendedores Apple en Argentina.";

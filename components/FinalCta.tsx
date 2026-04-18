@@ -30,7 +30,7 @@ export function FinalCta() {
           margin="-100px"
           className="mx-auto mt-8 max-w-[52ch] text-center text-lg leading-relaxed text-zinc-400"
         >
-          Web e IA listas en pocos días, con implementación guiada y soporte humano real.
+          Web e IA para WhatsApp e Instagram listas en pocos días, con implementación guiada y soporte humano real.
         </HeroReveal>
 
         <motion.div

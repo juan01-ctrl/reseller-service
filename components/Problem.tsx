@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import { easeOut } from "@/lib/motion";
 import { HeroPanelMuted, HeroReveal } from "@/components/ui/hero";
 
@@ -39,9 +39,16 @@ export function Problem() {
 
             <div className="if-before-media rounded-2xl border border-white/[0.1] bg-black/45 p-5 ring-1 ring-white/[0.05] sm:p-6">
               <div className="flex items-center justify-between gap-3 text-[11px] text-zinc-500">
-                <span className="flex items-center gap-2">
-                  <MessageCircle className="h-3.5 w-3.5 text-zinc-600" />
-                  WhatsApp Business
+                <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="flex items-center gap-1.5">
+                    <MessageCircle className="h-3.5 w-3.5 text-zinc-600" />
+                    <span className="text-zinc-400">WhatsApp</span>
+                  </span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="flex items-center gap-1.5">
+                    <Instagram className="h-3.5 w-3.5 text-zinc-600" />
+                    <span className="text-zinc-400">Instagram</span>
+                  </span>
                 </span>
                 <motion.span
                   animate={{ opacity: [0.7, 1, 0.7] }}

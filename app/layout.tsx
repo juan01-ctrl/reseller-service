@@ -11,7 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const baseUrl = getSiteUrl();
-const pageTitle = `${siteName} — Web + IA para importadores Apple`;
+const pageTitle = `${siteName} — Web + IA para WhatsApp e Instagram`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -38,6 +38,8 @@ export const metadata: Metadata = {
     "importadores Apple",
     "Argentina",
     "WhatsApp Business",
+    "Instagram",
+    "mensajes directos Instagram",
     "asistente IA",
     "catálogo web",
     "iPhone",

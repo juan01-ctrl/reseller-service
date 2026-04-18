@@ -13,7 +13,7 @@ const metrics = [
   {
     label: "Más cierres",
     stat: "+32%",
-    sub: "vs. solo WhatsApp manual",
+    sub: "vs. WhatsApp e Instagram a mano",
   },
   {
     label: "Menos trabajo repetitivo",
