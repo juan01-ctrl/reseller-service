@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { defaultDescription, getSiteUrl, siteName } from "@/lib/site";
 import "./globals.css";
 
@@ -98,7 +99,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" className={jakarta.variable}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
