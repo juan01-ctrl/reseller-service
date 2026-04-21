@@ -173,7 +173,7 @@ export function ChatbotWidget() {
       )}
 
       {open && (
-        <section className="fixed bottom-5 right-5 z-[80] w-[min(94vw,390px)] overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_60px_-24px_color-mix(in_oklch,var(--foreground)_20%,transparent)]">
+        <section className="fixed bottom-5 left-4 right-4 z-[80] mx-auto w-auto max-w-[390px] overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_60px_-24px_color-mix(in_oklch,var(--foreground)_20%,transparent)] sm:left-auto sm:right-5 sm:mx-0">
           <header className="flex items-center justify-between border-b border-border bg-muted/60 px-4 py-3">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary">
