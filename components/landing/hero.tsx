@@ -41,9 +41,8 @@ export function Hero() {
 
           <Reveal delay={0.3} duration={0.7}>
             <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-              Hecho para importadores de electrónica premium en Argentina. ImportBoost responde
-              WhatsApp, Instagram y tu web en menos de un minuto — con tu catálogo, tus cuotas y tu
-              tono. Cerrás antes de que el cliente abra la competencia.
+              Automatización en WhatsApp e Instagram: respuestas en segundos, con tu estilo. Web
+              para más alcance y catálogo siempre visible. Vendés antes de que comparen.
             </p>
           </Reveal>
 
