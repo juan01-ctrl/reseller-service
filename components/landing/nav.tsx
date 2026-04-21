@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { BrandMark } from "@/components/landing/brand-mark"
 import { whatsappUrl } from "@/lib/links"
 
 export function Nav() {
@@ -7,9 +8,7 @@ export function Nav() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <span className="text-[11px] font-bold">IB</span>
-          </span>
+          <BrandMark />
           ImportBoost
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">

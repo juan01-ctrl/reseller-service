@@ -1,7 +1,6 @@
-import { ArrowRight, Clock, HeartHandshake, ShieldCheck } from "lucide-react"
+import { ArrowRight, Clock, HeartHandshake } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ChatMock } from "@/components/landing/chat-mock"
-import { Marquee } from "@/components/landing/marquee"
 import { Reveal } from "@/components/motion/reveal"
 import { SplitHeading } from "@/components/motion/split-heading"
 import { whatsappUrl } from "@/lib/links"
@@ -70,9 +69,6 @@ export function Hero() {
               <li className="flex items-center gap-1.5">
                 <HeartHandshake className="h-3.5 w-3.5 text-primary" /> Soporte humano real
               </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Sin permanencia
-              </li>
             </ul>
           </Reveal>
         </div>
@@ -109,9 +105,11 @@ export function Hero() {
           />
         </Reveal>
 
+        {/*
         <Reveal delay={0.4} y={16} duration={0.8} className="mt-20 md:mt-28">
           <Marquee />
         </Reveal>
+        */}
       </div>
     </section>
   )

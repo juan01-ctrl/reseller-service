@@ -1,4 +1,5 @@
 import { whatsappUrl } from "@/lib/links"
+import { BrandMark } from "@/components/landing/brand-mark"
 
 export function Footer() {
   return (
@@ -7,9 +8,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <span className="text-[11px] font-bold">IB</span>
-              </span>
+              <BrandMark />
               ImportBoost
             </div>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">

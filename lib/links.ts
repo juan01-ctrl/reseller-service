@@ -1,12 +1,11 @@
-export const WHATSAPP_NUMBER = "5491100000000"
-export const CALENDLY_URL = "https://cal.com/juan-importboost/15min"
+export const WHATSAPP_NUMBER = "5491159570977"
+export const CALENDLY_URL = "https://calendly.com/juaniera01/30min"
 export const FOUNDER_NAME = "Juan"
 
 type WhatsAppRef =
   | "nav"
   | "hero"
   | "hero-secondary"
-  | "pricing-fundador"
   | "pricing-setup"
   | "pricing-mensual"
   | "final"
@@ -17,12 +16,11 @@ const MESSAGES: Record<WhatsAppRef, string> = {
   nav: "Hola, quiero ver una demo de ImportBoost. [ref:nav]",
   hero: "Hola, quiero ver una demo de ImportBoost. [ref:hero]",
   "hero-secondary": "Hola, tengo consultas sobre ImportBoost. [ref:hero-secondary]",
-  "pricing-fundador": "Hola, me interesa uno de los cupos fundadores con 40% off. [ref:fundador]",
-  "pricing-setup": "Hola, quiero arrancar con el setup de ImportBoost. [ref:setup]",
+  "pricing-setup": "Hola, me interesa el setup con 40% OFF. [ref:setup]",
   "pricing-mensual": "Hola, tengo consultas sobre el mantenimiento mensual. [ref:mensual]",
   final: "Hola, quiero ver una demo de ImportBoost. [ref:final]",
   "final-secondary": "Hola, quiero coordinar una llamada. [ref:final-secondary]",
-  proof: "Hola, me interesa uno de los cupos fundadores. [ref:proof]",
+  proof: "Hola, me interesa el setup promocional. [ref:proof]",
 }
 
 export function whatsappUrl(ref: WhatsAppRef): string {

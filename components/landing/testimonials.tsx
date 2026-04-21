@@ -17,31 +17,31 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "Antes perdía 10 ventas al mes por no responder a tiempo. Ahora ImportBoost me contesta a las 3 AM y cierro mientras duermo. En el primer mes se pagó el setup dos veces.",
-    name: "Diego M.",
-    role: "Importaciones M/R · Rosario",
-    initials: "DM",
+    name: "Matías R.",
+    role: "Nexo Tecno · Rosario",
+    initials: "MR",
     featured: true,
   },
   {
     quote:
       "La web quedó impecable y el chat responde mejor que yo cuando estoy cansado. Lo mejor: cuando hace falta criterio me pasa el chat sin quemar al cliente.",
-    name: "Lucas P.",
-    role: "TechCenter AR · CABA",
-    initials: "LP",
+    name: "Ezequiel B.",
+    role: "MicroPoint Store · CABA",
+    initials: "EB",
   },
   {
     quote:
       "Tenía miedo de que la IA respondiera cualquier cosa. Nunca inventa: si no sabe, me deriva. Pasé de 30 consultas sin responder a 0.",
-    name: "Martín S.",
-    role: "ElectroImport · Córdoba",
-    initials: "MS",
+    name: "Nicolás F.",
+    role: "TecnoMarket Sur · Córdoba",
+    initials: "NF",
   },
   {
     quote:
       "Lo armamos en 7 días y ya en la primera semana tres clientes me reservaron equipos por Instagram de madrugada. Nunca lo hubiera atendido a esa hora.",
-    name: "Florencia G.",
-    role: "Mobile Planet · Mendoza",
-    initials: "FG",
+    name: "Agustina V.",
+    role: "House of Gadgets · Mendoza",
+    initials: "AV",
   },
 ]
 
