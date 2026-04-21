@@ -51,12 +51,12 @@ export function Hero() {
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center md:gap-4">
               <Button asChild size="lg" className="h-12 rounded-full px-6 text-sm font-medium shadow-sm">
                 <a href={whatsappUrl("hero")} target="_blank" rel="noopener">
-                  Ver demo en mi WhatsApp
+                  Empezar ahora
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild variant="ghost" size="lg" className="h-12 rounded-full px-6 text-sm">
-                <a href="#precio">Ver precio y proceso</a>
+              <Button asChild variant="outline" className="h-11 rounded-full text-sm">
+                <a href="#precio">Ver planes</a>
               </Button>
             </div>
           </Reveal>

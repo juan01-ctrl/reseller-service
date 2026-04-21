@@ -13,13 +13,13 @@ type WhatsAppRef =
   | "proof"
 
 const MESSAGES: Record<WhatsAppRef, string> = {
-  nav: "Hola, quiero ver una demo de ImportBoost. [ref:nav]",
-  hero: "Hola, quiero ver una demo de ImportBoost. [ref:hero]",
-  "hero-secondary": "Hola, tengo consultas sobre ImportBoost. [ref:hero-secondary]",
-  "pricing-setup": "Hola, me interesa el setup con 40% OFF. [ref:setup]",
+  nav: "Hola, quiero empezar ahora con ImportBoost. [ref:nav]",
+  hero: "Hola, quiero empezar ahora con ImportBoost. [ref:hero]",
+  "hero-secondary": "Hola, quiero ver una demo de ImportBoost. [ref:hero-secondary]",
+  "pricing-setup": "Hola, quiero empezar ahora con el setup promocional (40% OFF). [ref:setup]",
   "pricing-mensual": "Hola, tengo consultas sobre el mantenimiento mensual. [ref:mensual]",
-  final: "Hola, quiero ver una demo de ImportBoost. [ref:final]",
-  "final-secondary": "Hola, quiero coordinar una llamada. [ref:final-secondary]",
+  final: "Hola, quiero empezar ahora con ImportBoost. [ref:final]",
+  "final-secondary": "Hola, quiero ver una demo de ImportBoost. [ref:final-secondary]",
   proof: "Hola, me interesa el setup promocional. [ref:proof]",
 }
 

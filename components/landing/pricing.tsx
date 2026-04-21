@@ -22,7 +22,7 @@ const tiers: Tier[] = [
   {
     id: "setup",
     name: "Setup",
-    tag: "Quedan 5 cupos de 15 · 40% OFF",
+    tag: "Quedan 5 de 15 cupos totales · 40% OFF",
     price: "USD 270",
     oldPrice: "USD 450",
     cadence: "Pago único",
@@ -34,7 +34,7 @@ const tiers: Tier[] = [
       "Sin contrato anual",
       "Garantía 30 días",
     ],
-    cta: { label: "Quiero reservar (quedan 5 de 15)", href: whatsappUrl("pricing-setup") },
+    cta: { label: "Quiero empezar ahora (quedan 5 de 15 totales)", href: whatsappUrl("pricing-setup") },
     highlight: true,
   },
   {

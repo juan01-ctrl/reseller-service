@@ -49,10 +49,10 @@ export function FinalCTA() {
               >
                 Mañana llega una consulta a las 3 AM. ¿La vas a perder otra vez?
               </SplitHeading>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Button asChild size="lg" className="h-12 rounded-full px-6 text-sm">
                   <a href={whatsappUrl("final")} target="_blank" rel="noopener">
-                    Ver demo en mi WhatsApp
+                    Empezar ahora
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
@@ -62,12 +62,22 @@ export function FinalCTA() {
                   size="lg"
                   className="h-12 rounded-full border-background/20 bg-transparent px-6 text-sm text-background hover:bg-background hover:text-foreground"
                 >
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener">
-                    <CalendarClock className="h-4 w-4" />
-                    Agendar 15 min con {FOUNDER_NAME}
+                  <a href={whatsappUrl("final-secondary")} target="_blank" rel="noopener">
+                    Ver demo
                   </a>
                 </Button>
               </div>
+              <p className="mt-4 text-sm text-background/70">
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-1.5 underline-offset-4 transition-colors hover:text-background hover:underline"
+                >
+                  <CalendarClock className="h-4 w-4 shrink-0" aria-hidden />
+                  O agendá 15 min con {FOUNDER_NAME}
+                </a>
+              </p>
             </div>
           </div>
         </Reveal>

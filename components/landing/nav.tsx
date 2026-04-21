@@ -18,7 +18,7 @@ export function Nav() {
         </nav>
         <Button asChild size="sm" className="rounded-full">
           <a href={whatsappUrl("nav")} target="_blank" rel="noopener">
-            Ver demo
+            Empezar ahora
           </a>
         </Button>
       </div>
