@@ -34,7 +34,7 @@ const tiers: Tier[] = [
       "Sin contrato anual",
       "Garantía 30 días",
     ],
-    cta: { label: "Quiero empezar ahora (quedan 5 de 15 totales)", href: whatsappUrl("pricing-setup") },
+    cta: { label: "Quiero empezar ahora", href: whatsappUrl("pricing-setup") },
     highlight: true,
   },
   {
@@ -58,7 +58,7 @@ const tiers: Tier[] = [
 export function Pricing() {
   return (
     <section id="precio" className="border-t border-border bg-muted/30">
-      <div className="mx-auto max-w-6xl px-6 py-14 md:py-28">
+      <div className="mx-auto min-w-0 max-w-6xl px-6 py-14 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal as="p" y={8} duration={0.5} className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
             Inversión
@@ -77,23 +77,27 @@ export function Pricing() {
           </Reveal>
         </div>
 
-        <StaggerGroup className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-2" stagger={0.12} y={32}>
+        <StaggerGroup
+          className="mx-auto mt-14 grid min-w-0 max-w-4xl gap-5 md:grid-cols-2"
+          stagger={0.12}
+          y={32}
+        >
           {tiers.map((t) => (
             <article
               key={t.id}
               className={cn(
-                "relative flex flex-col gap-6 rounded-2xl border bg-card p-7",
+                "relative flex min-w-0 flex-col gap-6 rounded-2xl border bg-card p-5 sm:p-7",
                 t.highlight
                   ? "border-primary/40 shadow-[0_30px_60px_-30px_color-mix(in_oklch,var(--primary)_50%,transparent)] md:-translate-y-2"
                   : "border-border",
               )}
             >
-              <header>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-foreground">{t.name}</h3>
+              <header className="min-w-0">
+                <div className="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-3">
+                  <h3 className="shrink-0 text-lg font-semibold text-foreground">{t.name}</h3>
                   <span
                     className={cn(
-                      "rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider",
+                      "max-w-full self-start rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase leading-snug tracking-wider whitespace-normal md:max-w-[min(100%,15rem)] md:text-right lg:max-w-[min(100%,18rem)]",
                       t.highlight
                         ? "border-primary/30 bg-primary/10 text-primary"
                         : "border-border bg-muted text-muted-foreground",
@@ -123,7 +127,7 @@ export function Pricing() {
               <Button
                 asChild
                 variant={t.highlight ? "default" : "outline"}
-                className="mt-auto h-11 rounded-full text-sm"
+                className="mt-auto h-auto min-h-11 whitespace-normal rounded-full px-4 py-2.5 text-center text-sm leading-snug md:h-11 md:py-0"
               >
                 <a
                   href={t.cta.href}
@@ -137,8 +141,12 @@ export function Pricing() {
           ))}
         </StaggerGroup>
 
-        <StaggerGroup className="mx-auto mt-8 grid max-w-4xl items-stretch gap-5 md:grid-cols-2" stagger={0.1} y={20}>
-          <div className="h-full rounded-2xl border border-primary/20 bg-primary/5 p-7">
+        <StaggerGroup
+          className="mx-auto mt-8 grid min-w-0 max-w-4xl items-stretch gap-5 md:grid-cols-2"
+          stagger={0.1}
+          y={20}
+        >
+          <div className="h-full min-w-0 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-7">
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">ROI</p>
             <p className="mt-2 text-lg font-medium text-foreground">
               Con un solo cierre, recuperás la inversión en el primer mes.
@@ -147,7 +155,7 @@ export function Pricing() {
               Al recuperar una consulta que hoy se enfría, podés cubrir setup y mantenimiento desde el inicio.
             </p>
           </div>
-          <div className="h-full rounded-2xl border border-border bg-card p-7">
+          <div className="h-full min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-7">
             <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" aria-hidden />
               Garantía de 30 días

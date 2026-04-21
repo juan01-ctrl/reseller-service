@@ -27,7 +27,7 @@ export function Hero() {
             as="h1"
             stagger={0.06}
             duration={0.9}
-            className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-[64px]"
+            className="mt-6 text-balance text-[42px] font-semibold leading-[1.05] tracking-tight text-foreground md:text-[64px]"
           >
             La IA que te cierra ventas{" "}
             <span className="relative inline-block">
@@ -48,14 +48,22 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.45} duration={0.7}>
-            <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center md:gap-4">
-              <Button asChild size="lg" className="h-12 rounded-full px-6 text-sm font-medium shadow-sm">
+            <div className="mt-8 flex w-full max-w-md flex-row items-center justify-center gap-2 self-center sm:max-w-none sm:gap-3 md:gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 min-w-0 flex-1 rounded-full px-3 text-sm font-medium shadow-sm sm:flex-none sm:px-6"
+              >
                 <a href={whatsappUrl("hero")} target="_blank" rel="noopener">
                   Empezar ahora
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 shrink-0" />
                 </a>
               </Button>
-              <Button asChild variant="outline" className="h-11 rounded-full text-sm">
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 min-w-0 flex-1 rounded-full px-3 text-sm sm:flex-none sm:px-6"
+              >
                 <a href="#precio">Ver planes</a>
               </Button>
             </div>
