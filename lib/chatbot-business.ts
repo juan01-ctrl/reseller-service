@@ -24,7 +24,8 @@ export const businessFacts = {
   niche: "Importadores y revendedores de tecnología en Argentina",
   channels: ["WhatsApp", "Instagram", "web"],
   prices: {
-    setupPromo: "USD 270 (40% OFF sobre USD 450, quedan 5 cupos)",
+    setupPromo:
+      "USD 270 (40% OFF sobre USD 450; quedan 5 cupos disponibles de un total de 15)",
     setupBase: "USD 450 pago único",
     monthly: "USD 39 por mes",
   },
