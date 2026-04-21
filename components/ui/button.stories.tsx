@@ -1,0 +1,48 @@
+import type { Meta, StoryObj } from "@storybook/react"
+import { expect, userEvent, within, fn } from "@storybook/test"
+import { Button } from "./button"
+
+const meta = {
+  title: "UI/Button",
+  component: Button,
+  tags: ["autodocs"],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "destructive", "outline", "secondary", "ghost", "link"],
+    },
+    size: { control: "select", options: ["default", "sm", "lg", "icon"] },
+    disabled: { control: "boolean" },
+    asChild: { control: "boolean" },
+    onClick: { action: "clicked" },
+  },
+  args: {
+    children: "Button",
+    onClick: fn(),
+  },
+  parameters: {
+    a11y: { config: { rules: [{ id: "color-contrast", enabled: true }] } },
+  },
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}
+export const Destructive: Story = { args: { variant: "destructive" } }
+export const Outline: Story = { args: { variant: "outline" } }
+export const Secondary: Story = { args: { variant: "secondary" } }
+export const Ghost: Story = { args: { variant: "ghost" } }
+export const Link: Story = { args: { variant: "link" } }
+
+export const Small: Story = { args: { size: "sm" } }
+export const Large: Story = { args: { size: "lg" } }
+export const Disabled: Story = { args: { disabled: true } }
+
+export const Clicks: Story = {
+  play: async ({ canvasElement, args }) => {
+    const c = within(canvasElement)
+    await userEvent.click(c.getByRole("button"))
+    await expect(args.onClick).toHaveBeenCalledOnce()
+  },
+}
