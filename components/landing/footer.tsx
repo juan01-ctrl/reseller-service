@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
               <BrandMark />
@@ -57,38 +57,12 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://instagram.com/importboost"
+                  href="https://www.instagram.com/import.boost/"
                   target="_blank"
                   rel="noopener"
                   className="text-foreground hover:text-primary"
                 >
                   Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hola@importboost.online"
-                  className="text-foreground hover:text-primary"
-                >
-                  Email
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Legal
-            </p>
-            <ul className="mt-4 flex flex-col gap-2 text-sm">
-              <li>
-                <a href="/terminos" className="text-foreground hover:text-primary">
-                  Términos
-                </a>
-              </li>
-              <li>
-                <a href="/privacidad" className="text-foreground hover:text-primary">
-                  Privacidad
                 </a>
               </li>
             </ul>
