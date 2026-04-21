@@ -41,8 +41,7 @@ export function Hero() {
 
           <Reveal delay={0.3} duration={0.7}>
             <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-              Automatización en WhatsApp e Instagram: respuestas en segundos, con tu estilo. Web
-              para más alcance y catálogo siempre visible. Vendés antes de que comparen.
+              Automatizá WhatsApp e Instagram + web con catálogo: respondé al instante y cerrá antes.
             </p>
           </Reveal>
 
