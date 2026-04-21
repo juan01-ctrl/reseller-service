@@ -1,33 +1,63 @@
-# Front-End Expert Starter
+# ImportBoost
 
-Next.js 15 · React 19 · Tailwind v4 (CSS-first) · shadcn/ui patterns · Radix Primitives · Motion · Storybook with a11y addon.
+Landing page for ImportBoost — IA de ventas para importadores de electrónica premium en Argentina. Responde WhatsApp, Instagram y tu web en menos de un minuto, 24/7.
 
-## Use
+**Live:** https://importboost.vercel.app
 
-```bash
-# Copy this template into a new project
-cp -R template my-new-app && cd my-new-app
+## Stack
 
-# Install
-pnpm install    # or npm install
+- **Next.js 16** (App Router, static prerender)
+- **Tailwind v4** (CSS-first tokens via `@theme`)
+- **Radix Primitives** (Accordion, Slot)
+- **shadcn/ui** patterns (owned components in `components/ui/`)
+- **GSAP + ScrollTrigger** — scroll-triggered reveals, staggered cards, split-word heading animations
+- **@paper-design/shaders-react** — per-icon WebGL shader backgrounds (8 unique shaders)
+- **next-themes** — light default with dark toggle
+- **Lucide** icons
 
-# Dev
-pnpm dev
-pnpm storybook
+## Project structure
+
+```
+app/
+  globals.css          # Evergreen token scale, dark scope, motion keyframes
+  layout.tsx           # Metadata, ThemeProvider, dev color picker mount
+  page.tsx             # Section composition
+components/
+  landing/             # All sections: hero, problem, features, process,
+                       # stats, testimonials, pricing, faq, final-cta,
+                       # footer, marquee, chat-mock, shader-badge
+  motion/              # Reveal, StaggerGroup, SplitHeading (GSAP wrappers)
+  dev/theme-controls   # Floating color picker + dark toggle
+  ui/                  # Button, Accordion (shadcn/Radix)
+lib/
+  gsap.ts              # ScrollTrigger registration + reduced-motion helper
+  links.ts             # WhatsApp deep links, Calendly URL, founder name
+  utils.ts             # cn() helper
 ```
 
-## What's in the box
+## Develop
 
-- [app/globals.css](app/globals.css) — complete OKLCH token set, `@theme` bridge, class-based dark mode, `prefers-reduced-motion` reset.
-- [app/layout.tsx](app/layout.tsx) — `next-themes` provider wired to the `.dark` class.
-- [app/page.tsx](app/page.tsx) — smoke-test page using `<Button>`.
-- [lib/utils.ts](lib/utils.ts) — the `cn()` helper (clsx + tailwind-merge).
-- [components/ui/button.tsx](components/ui/button.tsx) — canonical cva + forwardRef + asChild component.
-- [components/ui/button.stories.tsx](components/ui/button.stories.tsx) — CSF3 story with state stories + `play` interaction test + a11y.
-- [.storybook/main.ts](.storybook/main.ts) / [preview.ts](.storybook/preview.ts) — addons + dark-mode decorator.
+```bash
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm typecheck
+pnpm build
+```
 
-## Next steps
+## Deploy
 
-1. `npx shadcn@latest init` — point it at `app/globals.css` and `components/ui`.
-2. Add primitives with `npx shadcn@latest add dialog dropdown-menu ...` — or scaffold your own with the `component-scaffold` skill.
-3. Read the [source-of-truth stack rules](../skills/frontend-stack/SKILL.md).
+Hosted on Vercel. Push to `main` triggers production deploy (once Git is linked).
+
+Manual deploy from local:
+
+```bash
+vercel deploy --prod
+```
+
+## TODO before full launch
+
+1. Swap placeholders in `lib/links.ts` — real WhatsApp number, Calendly URL, founder name.
+2. Replace testimonials in `components/landing/testimonials.tsx` with real quotes when fundador clients complete their 60-day window.
+3. Replace marquee client names in `components/landing/marquee.tsx`.
+4. Add OG image PNG at `public/og.png` (1200×630).
+5. Add favicon to `app/`.
