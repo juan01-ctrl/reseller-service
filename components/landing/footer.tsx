@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
               <BrandMark />
@@ -63,6 +63,39 @@ export function Footer() {
                   className="text-foreground hover:text-primary"
                 >
                   Instagram
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@importboost.online" className="text-foreground hover:text-primary">
+                  support@importboost.online
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Legal
+            </p>
+            <ul className="mt-4 flex flex-col gap-2 text-sm">
+              <li>
+                <a href="/politica-de-privacidad" className="text-foreground hover:text-primary">
+                  Política de privacidad
+                </a>
+              </li>
+              <li>
+                <a href="/terminos-y-condiciones" className="text-foreground hover:text-primary">
+                  Términos y condiciones
+                </a>
+              </li>
+              <li>
+                <a href="/politica-de-servicio" className="text-foreground hover:text-primary">
+                  Política de servicio
+                </a>
+              </li>
+              <li>
+                <a href="/eliminacion-de-datos" className="text-foreground hover:text-primary">
+                  Eliminación de datos
                 </a>
               </li>
             </ul>
