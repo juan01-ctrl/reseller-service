@@ -25,9 +25,9 @@ export const businessFacts = {
   channels: ["WhatsApp", "Instagram", "web"],
   prices: {
     setupPromo:
-      "USD 270 (40% OFF sobre USD 450; quedan 5 cupos disponibles de un total de 15)",
-    setupBase: "USD 450 pago único",
-    monthly: "USD 39 por mes",
+      "USD 510 (30% OFF sobre USD 729, promocion por tiempo limitado)",
+    setupBase: "USD 729 pago único",
+    monthly: "USD 43 por mes",
   },
   setupIncludes: [
     "Web profesional",
@@ -97,8 +97,9 @@ const domainKeywords = [
   "setup",
   "mantenimiento",
   "mensual",
-  "fundador",
-  "cupo",
+  "promo",
+  "promocion",
+  "promoción",
   "descuento",
   "web",
   "catalogo",
@@ -169,7 +170,14 @@ export function hasStrongOffTopicHint(message: string): boolean {
 export function detectIntent(message: string): ChatIntent {
   const q = normalize(message)
 
-  if (q.includes("fundador") || q.includes("cupo") || q.includes("descuento") || q.includes("off")) {
+  if (
+    q.includes("fundador") ||
+    q.includes("cupo") ||
+    q.includes("descuento") ||
+    q.includes("off") ||
+    q.includes("promo") ||
+    q.includes("promocion")
+  ) {
     return "founder_offer"
   }
   if (

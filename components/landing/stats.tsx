@@ -2,9 +2,24 @@ import { SplitHeading } from "@/components/motion/split-heading"
 import { StaggerGroup } from "@/components/motion/stagger-group"
 
 const stats = [
-  { value: "7 días", label: "De tu catálogo a producción" },
-  { value: "< 1 min", label: "Tiempo de respuesta del asistente" },
-  { value: "30 días", label: "Garantía con devolución completa" },
+  {
+    kicker: "Implementación",
+    value: "7 días",
+    label: "De tu catálogo a producción",
+    detail: "Activación completa sin frenar operaciones.",
+  },
+  {
+    kicker: "Velocidad",
+    value: "< 1 min",
+    label: "Tiempo de respuesta del asistente",
+    detail: "Consultas atendidas mientras vos vendés.",
+  },
+  {
+    kicker: "Garantía",
+    value: "30 días",
+    label: "Devolución completa del setup",
+    detail: "Sin letra chica, con soporte humano.",
+  },
 ]
 
 export function Stats() {
@@ -27,11 +42,18 @@ export function Stats() {
           y={18}
         >
           {stats.map((s) => (
-            <div key={s.label} className="flex flex-col gap-2 bg-card px-8 py-10 text-center">
-              <span className="font-mono text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+            <div
+              key={s.label}
+              className="flex flex-col gap-2 bg-card px-8 py-8 text-center transition-colors duration-300 hover:bg-card/90 md:py-10"
+            >
+              <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-primary/90">
+                {s.kicker}
+              </span>
+              <span className="text-4xl font-semibold tracking-tight text-foreground md:text-[52px]">
                 {s.value}
               </span>
-              <span className="text-sm text-muted-foreground">{s.label}</span>
+              <span className="text-base font-medium text-foreground/90">{s.label}</span>
+              <span className="text-sm text-muted-foreground">{s.detail}</span>
             </div>
           ))}
         </StaggerGroup>

@@ -12,6 +12,8 @@ type Props = {
   stagger?: number
   duration?: number
   start?: string
+  /** Selector (dentro del heading) para un acento que se anima al terminar las palabras (ej. subrayado). */
+  accentSelector?: string
 }
 
 function splitTextNodes(nodes: React.ReactNode): React.ReactNode {
@@ -48,6 +50,7 @@ export function SplitHeading({
   stagger = 0.05,
   duration = 0.7,
   start = "top 85%",
+  accentSelector,
 }: Props) {
   const ref = React.useRef<HTMLElement | null>(null)
 
@@ -56,27 +59,51 @@ export function SplitHeading({
     if (!el) return
     const words = el.querySelectorAll<HTMLElement>(".split-word")
     if (words.length === 0) return
+    const accent = accentSelector ? el.querySelector<HTMLElement>(accentSelector) : null
+
     if (prefersReducedMotion()) {
       gsap.set(words, { opacity: 1, y: 0 })
+      if (accent) gsap.set(accent, { scaleX: 1, transformOrigin: "0% 50%" })
       return
     }
+
     const ctx = gsap.context(() => {
+      const st = {
+        trigger: el,
+        start,
+        toggleActions: "play none none none" as const,
+      }
+
+      if (!accent) {
+        gsap.set(words, { opacity: 0, y })
+        gsap.to(words, {
+          opacity: 1,
+          y: 0,
+          duration,
+          ease: "power3.out",
+          stagger,
+          scrollTrigger: st,
+        })
+        return
+      }
+
       gsap.set(words, { opacity: 0, y })
-      gsap.to(words, {
-        opacity: 1,
-        y: 0,
-        duration,
-        ease: "power3.out",
-        stagger,
-        scrollTrigger: {
-          trigger: el,
-          start,
-          toggleActions: "play none none none",
-        },
-      })
+      gsap.set(accent, { scaleX: 0, transformOrigin: "0% 50%" })
+
+      const tl = gsap.timeline({ scrollTrigger: st })
+      tl.fromTo(
+        words,
+        { opacity: 0, y },
+        { opacity: 1, y: 0, duration, ease: "power3.out", stagger },
+      ).fromTo(
+        accent,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.4, ease: "power2.out" },
+        ">-=0.28",
+      )
     })
     return () => ctx.revert()
-  }, [y, stagger, duration, start])
+  }, [y, stagger, duration, start, accentSelector])
 
   const Component = Tag as React.ElementType
   return (

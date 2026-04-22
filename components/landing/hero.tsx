@@ -20,13 +20,14 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal as="span" y={8} duration={0.5} className="inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card/60 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.1em] text-muted-foreground sm:px-3 sm:text-[11px] sm:tracking-[0.15em]">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-            Importadores de electrónica · Argentina
+            Para importadores de electrónica
           </Reveal>
 
           <SplitHeading
             as="h1"
             stagger={0.06}
             duration={0.9}
+            accentSelector="[data-heading-accent]"
             className="mt-6 text-balance text-[42px] font-semibold leading-[1.05] tracking-tight text-foreground md:text-[64px]"
           >
             La IA que te cierra ventas{" "}
@@ -34,7 +35,8 @@ export function Hero() {
               <span className="relative z-10 text-primary">mientras dormís.</span>
               <span
                 aria-hidden
-                className="absolute inset-x-0 bottom-1 -z-0 h-2 rounded-sm bg-primary/15"
+                data-heading-accent
+                className="absolute inset-x-0 bottom-1 -z-0 h-2 max-md:hidden origin-left rounded-sm bg-primary/15 will-change-transform"
               />
             </span>
           </SplitHeading>
