@@ -14,7 +14,7 @@ const svg = readFileSync(svgPath)
 
 const targets = [
   ["icon.png", 512],
-  ["icon-192.png", 192],
+  ["android-chrome-192x192.png", 192],
   ["favicon-32x32.png", 32],
   ["apple-touch-icon.png", 180],
 ]

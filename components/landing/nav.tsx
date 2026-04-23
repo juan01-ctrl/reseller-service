@@ -9,7 +9,7 @@ export function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
           <BrandMark />
-          ImportBoost
+          <span className="hidden md:inline">ImportBoost</span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           <a href="#como-funciona" className="transition-colors hover:text-foreground">Cómo funciona</a>
