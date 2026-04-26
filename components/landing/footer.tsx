@@ -1,3 +1,4 @@
+import { legalSiteOperatorNotice } from "@/lib/legal"
 import { whatsappUrl } from "@/lib/links"
 import { BrandMark } from "@/components/landing/brand-mark"
 
@@ -102,9 +103,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
-          <p>© 2026 ImportBoost. Todos los derechos reservados.</p>
-          <p>Hecho para el importador argentino que vende por Instagram y WhatsApp.</p>
+        <div className="mt-12 space-y-6 border-t border-border pt-6">
+          <p className="text-xs leading-relaxed text-muted-foreground md:max-w-3xl">{legalSiteOperatorNotice}</p>
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
+            <p>© 2026 ImportBoost. Todos los derechos reservados.</p>
+            <p>Hecho para el importador argentino que vende por Instagram y WhatsApp.</p>
+          </div>
         </div>
       </div>
     </footer>

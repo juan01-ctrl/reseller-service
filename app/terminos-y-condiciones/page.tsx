@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { SiteOperatorNotice } from "@/components/legal/site-operator-notice"
 import { legalIdentity } from "@/lib/legal"
 import { siteName } from "@/lib/site"
 
@@ -11,6 +12,7 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen bg-background">
       <section className="mx-auto max-w-4xl px-6 py-14 md:py-20">
+        <SiteOperatorNotice className="mb-8" />
         <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">Términos y Condiciones</h1>
         <p className="mt-3 text-sm text-muted-foreground">Última actualización: {legalIdentity.updatedAt}</p>
 

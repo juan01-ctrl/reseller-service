@@ -8,3 +8,7 @@ export const legalIdentity = {
   taxStatus: "Monotributista",
   updatedAt: "22 de abril de 2026",
 } as const
+
+/** Aviso del operador del sitio (footer y páginas legales). */
+export const legalSiteOperatorNotice =
+  `Este sitio web es operado por ${legalIdentity.legalName}, monotributista registrado en Argentina bajo el CUIT ${legalIdentity.cuit}.`
