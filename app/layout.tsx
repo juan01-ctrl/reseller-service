@@ -91,6 +91,7 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   other: {
+    "facebook-domain-verification": "yn060fte903h0bo40bhh4snoaizyi7",
     "geo.region": businessGeo.region,
     "geo.placename": businessGeo.placename,
     "geo.position": businessGeo.position,
