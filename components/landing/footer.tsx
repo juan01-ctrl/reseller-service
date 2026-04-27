@@ -1,6 +1,15 @@
-import { legalSiteOperatorNotice } from "@/lib/legal"
-import { whatsappUrl } from "@/lib/links"
+import { legalIdentity, legalSiteOperatorNotice } from "@/lib/legal"
+import { WHATSAPP_NUMBER, whatsappUrl } from "@/lib/links"
 import { BrandMark } from "@/components/landing/brand-mark"
+
+function formatPhone(number: string) {
+  if (!number.startsWith("549")) return `+${number}`
+  const local = number.slice(3)
+  if (local.length === 10) {
+    return `+54 9 ${local.slice(0, 2)} ${local.slice(2, 6)}-${local.slice(6)}`
+  }
+  return `+${number}`
+}
 
 export function Footer() {
   return (
@@ -71,6 +80,11 @@ export function Footer() {
                   support@importboost.online
                 </a>
               </li>
+              <li>
+                <a href={whatsappUrl("nav")} target="_blank" rel="noopener" className="text-foreground hover:text-primary">
+                  {formatPhone(WHATSAPP_NUMBER)}
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -104,7 +118,22 @@ export function Footer() {
         </div>
 
         <div className="mt-12 space-y-6 border-t border-border pt-6">
-          <p className="text-xs leading-relaxed text-muted-foreground md:max-w-3xl">{legalSiteOperatorNotice}</p>
+          <div className="rounded-xl border border-border/70 bg-card/70 p-4 text-xs leading-relaxed text-muted-foreground">
+            <p className="font-medium text-foreground/90">Datos legales y fiscales del operador</p>
+            <p className="mt-2">{legalSiteOperatorNotice}</p>
+            <ul className="mt-2 space-y-1">
+              <li>
+                Titular responsable: {legalIdentity.legalName} (DNI {legalIdentity.dni})
+              </li>
+              <li>Nombre comercial: {legalIdentity.tradeName}</li>
+              <li>CUIT: {legalIdentity.cuit}</li>
+              <li>Condición fiscal: {legalIdentity.taxStatus} (ARCA/AFIP)</li>
+              <li>Domicilio fiscal: {legalIdentity.address}</li>
+              <li>
+                Canal de contacto y soporte: {legalIdentity.supportEmail} · {formatPhone(WHATSAPP_NUMBER)}
+              </li>
+            </ul>
+          </div>
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
             <p>© 2026 ImportBoost. Todos los derechos reservados.</p>
             <p>Hecho para el importador argentino que vende por Instagram y WhatsApp.</p>
