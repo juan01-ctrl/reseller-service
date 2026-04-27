@@ -16,11 +16,16 @@ export function Nav() {
           <a href="#precio" className="transition-colors hover:text-foreground">Precio</a>
           <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
         </nav>
-        <Button asChild size="sm" className="rounded-full">
-          <a href={whatsappUrl("nav")} target="_blank" rel="noopener">
-            Empezar ahora
-          </a>
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild size="sm" variant="outline" className="rounded-full">
+            <Link href="/login">Ingresar</Link>
+          </Button>
+          <Button asChild size="sm" className="rounded-full">
+            <a href={whatsappUrl("nav")} target="_blank" rel="noopener">
+              Empezar ahora
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   )

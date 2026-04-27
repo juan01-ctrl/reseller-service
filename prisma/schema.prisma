@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  client
+  admin
+}
+
+enum IntegrationProvider {
+  meta
+}
+
+enum IntegrationType {
+  whatsapp
+  instagram
+}
+
+enum IntegrationStatus {
+  connected
+  needs_reconnect
+  missing_permissions
+  disconnected
+}
+
+model User {
+  id            String                @id @default(cuid())
+  email         String                @unique
+  name          String
+  passwordHash  String
+  role          UserRole              @default(client)
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+  sessions      Session[]
+  integrations  MetaIntegration[]
+  whatsapp      WhatsAppConnection[]
+  instagram     InstagramConnection[]
+  events        IntegrationEvent[]
+  oauthStates   OAuthState[]
+}
+
+model Session {
+  id               String   @id @default(cuid())
+  userId           String
+  sessionTokenHash String   @unique
+  expiresAt        DateTime
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  lastSeenAt       DateTime @default(now())
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model MetaIntegration {
+  id                    String               @id @default(cuid())
+  userId                String
+  provider              IntegrationProvider  @default(meta)
+  integrationType       IntegrationType
+  accessTokenEncrypted  String?
+  refreshTokenEncrypted String?
+  tokenExpiresAt        DateTime?
+  grantedScopes         String[]
+  metaUserId            String?
+  businessId            String?
+  status                IntegrationStatus    @default(disconnected)
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+  user                  User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  whatsappConnections   WhatsAppConnection[]
+  instagramConnections  InstagramConnection[]
+
+  @@unique([userId, integrationType])
+  @@index([status])
+}
+
+model WhatsAppConnection {
+  id                 String            @id @default(cuid())
+  userId             String
+  metaIntegrationId  String
+  businessId         String?
+  wabaId             String
+  phoneNumberId      String
+  displayPhoneNumber String?
+  verifiedName       String?
+  qualityRating      String?
+  status             IntegrationStatus @default(connected)
+  webhookSubscribed  Boolean           @default(false)
+  lastSyncAt         DateTime?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metaIntegration    MetaIntegration   @relation(fields: [metaIntegrationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, wabaId, phoneNumberId])
+  @@index([wabaId])
+  @@index([phoneNumberId])
+}
+
+model InstagramConnection {
+  id                         String            @id @default(cuid())
+  userId                     String
+  metaIntegrationId          String
+  pageId                     String
+  pageName                   String?
+  instagramBusinessAccountId String
+  username                   String?
+  profilePictureUrl          String?
+  status                     IntegrationStatus @default(connected)
+  webhookSubscribed          Boolean           @default(false)
+  lastSyncAt                 DateTime?
+  createdAt                  DateTime          @default(now())
+  updatedAt                  DateTime          @updatedAt
+  user                       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metaIntegration            MetaIntegration   @relation(fields: [metaIntegrationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, pageId, instagramBusinessAccountId])
+  @@index([pageId])
+  @@index([instagramBusinessAccountId])
+}
+
+model IntegrationEvent {
+  id           String              @id @default(cuid())
+  userId       String?
+  provider     IntegrationProvider @default(meta)
+  type         String
+  message      String
+  metadataJson Json?
+  createdAt    DateTime            @default(now())
+  user         User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([type, createdAt])
+}
+
+model OAuthState {
+  id              String          @id @default(cuid())
+  userId          String
+  integrationType IntegrationType
+  state           String          @unique
+  expiresAt       DateTime
+  consumedAt      DateTime?
+  createdAt       DateTime        @default(now())
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, integrationType, expiresAt])
+}
