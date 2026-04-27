@@ -45,6 +45,54 @@ type MetaWhatsAppAccountsResponse = {
   }>
 }
 
+type MetaPhoneNumbersResponse = {
+  data?: Array<{
+    id?: string
+    display_phone_number?: string
+    verified_name?: string
+    quality_rating?: string
+  }>
+}
+
+function makeWhatsAppConnectionKey(wabaId: string, phoneNumberId: string | null | undefined) {
+  const normalizedPhoneNumberId = phoneNumberId && phoneNumberId.trim() ? phoneNumberId.trim() : "__NO_PHONE__"
+  return `${wabaId}::${normalizedPhoneNumberId}`
+}
+
+async function getExcludedWhatsAppConnectionKeys(userId: string) {
+  const events = await db.integrationEvent.findMany({
+    where: {
+      userId,
+      type: "whatsapp_connection_excluded",
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 500,
+  })
+
+  const keys = new Set<string>()
+  for (const event of events) {
+    if (!event.metadataJson || typeof event.metadataJson !== "object" || Array.isArray(event.metadataJson)) continue
+    const metadata = event.metadataJson as Record<string, unknown>
+    const wabaId = typeof metadata.wabaId === "string" ? metadata.wabaId : null
+    const phoneNumberId = typeof metadata.phoneNumberId === "string" ? metadata.phoneNumberId : null
+    if (!wabaId) continue
+    keys.add(makeWhatsAppConnectionKey(wabaId, phoneNumberId))
+  }
+
+  return keys
+}
+
+export async function clearExcludedWhatsAppConnections(userId: string) {
+  await db.integrationEvent.deleteMany({
+    where: {
+      userId,
+      type: "whatsapp_connection_excluded",
+    },
+  })
+}
+
 type MetaPagesResponse = {
   data?: Array<{
     id: string
@@ -162,6 +210,7 @@ export async function upsertIntegrationFromOAuth(params: {
   const metaMe = await metaFetch<MetaMeResponse>("/me?fields=id", accessToken)
   const grantedScopes = await fetchGrantedScopes(accessToken)
   const requiredScopes = getScopesForType(params.integrationType)
+  const missingRequiredScopes = missingScopes(requiredScopes, grantedScopes)
   const status = normalizeStatus(requiredScopes, grantedScopes)
 
   const integration = await db.metaIntegration.upsert({
@@ -195,6 +244,8 @@ export async function upsertIntegrationFromOAuth(params: {
     integrationType: params.integrationType,
     status,
     grantedScopes,
+    requiredScopes,
+    missingRequiredScopes,
   })
 
   return integration
@@ -224,30 +275,88 @@ export async function syncWhatsAppIntegration(userId: string) {
   const accessToken = await getDecryptedToken(integration)
   try {
     const businesses = await metaFetch<MetaBusinessesResponse>("/me/businesses?fields=id,name&limit=100", accessToken)
+    const excludedKeys = await getExcludedWhatsAppConnectionKeys(userId)
     const records: Prisma.WhatsAppConnectionCreateManyInput[] = []
+    const endpointFailures: Array<{
+      businessId: string
+      endpoint: "owned_whatsapp_business_accounts" | "client_whatsapp_business_accounts"
+      reason: string
+      code?: number
+    }> = []
+    let successfulEndpointCalls = 0
 
     for (const business of businesses.data ?? []) {
-      const waba = await metaFetch<MetaWhatsAppAccountsResponse>(
-        `/${business.id}/owned_whatsapp_business_accounts?fields=id,name,phone_numbers{id,display_phone_number,verified_name,quality_rating}&limit=100`,
-        accessToken
-      )
+      const endpoints: Array<{
+        path: string
+        key: "owned_whatsapp_business_accounts" | "client_whatsapp_business_accounts"
+      }> = [
+        {
+          key: "owned_whatsapp_business_accounts",
+          path: `/${business.id}/owned_whatsapp_business_accounts?fields=id,name,phone_numbers{id,display_phone_number,verified_name,quality_rating}&limit=100`,
+        },
+        {
+          key: "client_whatsapp_business_accounts",
+          path: `/${business.id}/client_whatsapp_business_accounts?fields=id,name,phone_numbers{id,display_phone_number,verified_name,quality_rating}&limit=100`,
+        },
+      ]
 
-      for (const account of waba.data ?? []) {
-        const phones = account.phone_numbers && account.phone_numbers.length > 0 ? account.phone_numbers : [{}]
-        for (const phone of phones) {
-          records.push({
-            userId,
-            metaIntegrationId: integration.id,
+      for (const endpoint of endpoints) {
+        let waba: MetaWhatsAppAccountsResponse | null = null
+        try {
+          waba = await metaFetch<MetaWhatsAppAccountsResponse>(endpoint.path, accessToken)
+          successfulEndpointCalls += 1
+        } catch (error) {
+          const reason = error instanceof Error ? error.message : "Unknown endpoint error"
+          endpointFailures.push({
             businessId: business.id,
-            wabaId: account.id,
-            phoneNumberId: phone.id ?? "",
-            displayPhoneNumber: phone.display_phone_number ?? null,
-            verifiedName: phone.verified_name ?? account.name ?? null,
-            qualityRating: phone.quality_rating ?? null,
-            status: "connected",
-            webhookSubscribed: false,
-            lastSyncAt: new Date(),
+            endpoint: endpoint.key,
+            reason,
+            code: error instanceof MetaApiError ? error.code : undefined,
           })
+          continue
+        }
+
+        for (const account of waba.data ?? []) {
+          let phones = account.phone_numbers && account.phone_numbers.length > 0 ? account.phone_numbers : []
+
+          // Fallback: some accounts do not return phone_numbers in the business edge payload.
+          if (phones.length === 0) {
+            try {
+              const phoneNumbers = await metaFetch<MetaPhoneNumbersResponse>(
+                `/${account.id}/phone_numbers?fields=id,display_phone_number,verified_name,quality_rating&limit=100`,
+                accessToken
+              )
+              phones = phoneNumbers.data ?? []
+            } catch {
+              phones = []
+            }
+          }
+
+          if (phones.length === 0) {
+            phones = [{}]
+          }
+
+          for (const phone of phones) {
+            const key = makeWhatsAppConnectionKey(account.id, phone.id ?? null)
+            const wabaLevelKey = makeWhatsAppConnectionKey(account.id, null)
+            if (excludedKeys.has(key) || excludedKeys.has(wabaLevelKey)) {
+              continue
+            }
+
+            records.push({
+              userId,
+              metaIntegrationId: integration.id,
+              businessId: business.id,
+              wabaId: account.id,
+              phoneNumberId: phone.id ?? "",
+              displayPhoneNumber: phone.display_phone_number ?? null,
+              verifiedName: phone.verified_name ?? account.name ?? null,
+              qualityRating: phone.quality_rating ?? null,
+              status: "connected",
+              webhookSubscribed: false,
+              lastSyncAt: new Date(),
+            })
+          }
         }
       }
     }
@@ -257,7 +366,10 @@ export async function syncWhatsAppIntegration(userId: string) {
       await db.whatsAppConnection.createMany({ data: records })
     }
 
-    const status: IntegrationStatus = records.length > 0 ? "connected" : "needs_reconnect"
+    const permissionDenied = endpointFailures.some((failure) => failure.reason.includes("Requires business_management permission"))
+    const noSuccessfulBusinessQueries = successfulEndpointCalls === 0
+    const status: IntegrationStatus =
+      records.length > 0 ? "connected" : permissionDenied && noSuccessfulBusinessQueries ? "missing_permissions" : "needs_reconnect"
     const primaryBusinessId = records[0]?.businessId ?? null
 
     await db.metaIntegration.update({
@@ -268,18 +380,37 @@ export async function syncWhatsAppIntegration(userId: string) {
       },
     })
 
+    if (records.length === 0 && permissionDenied && noSuccessfulBusinessQueries) {
+      const details = endpointFailures
+        .slice(0, 3)
+        .map((failure) => `${failure.businessId}:${failure.endpoint}`)
+        .join(", ")
+      throw new Error(
+        `Meta denied business assets access despite granted scope. Check Business Manager permissions for this user/WABA. (${details || "no endpoints"})`
+      )
+    }
+
     await logIntegrationEvent(userId, "whatsapp_sync", "WhatsApp assets synced successfully.", {
       records: records.length,
       integrationId: integration.id,
+      endpointFailures,
+      businessesFound: (businesses.data ?? []).length,
+      successfulEndpointCalls,
+      excludedConnections: excludedKeys.size,
     })
 
     return { status, count: records.length }
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown WhatsApp sync error"
+    const isMissingPermissions =
+      (error instanceof MetaApiError && error.code === 200) ||
+      message.includes("business_management") ||
+      message.includes("Meta denied business assets access despite granted scope")
+
     await db.metaIntegration.update({
       where: { id: integration.id },
       data: {
-        status: error instanceof MetaApiError ? "missing_permissions" : "needs_reconnect",
+        status: isMissingPermissions ? "missing_permissions" : "needs_reconnect",
       },
     })
     await logIntegrationEvent(userId, "whatsapp_sync_failed", "WhatsApp sync failed.", { reason: message })
@@ -391,6 +522,194 @@ export async function disconnectIntegration(userId: string, integrationType: Int
   await logIntegrationEvent(userId, "integration_disconnected", `${integrationType} integration disconnected.`, {
     integrationType,
   })
+}
+
+export async function disconnectWhatsAppConnectionById(userId: string, connectionId: string) {
+  const connection = await db.whatsAppConnection.findFirst({
+    where: {
+      id: connectionId,
+      userId,
+    },
+    select: {
+      id: true,
+      wabaId: true,
+      phoneNumberId: true,
+      metaIntegrationId: true,
+    },
+  })
+
+  if (!connection) {
+    throw new Error("WhatsApp connection not found")
+  }
+
+  const integration = await db.metaIntegration.findUnique({
+    where: { id: connection.metaIntegrationId },
+    select: {
+      id: true,
+      accessTokenEncrypted: true,
+      integrationType: true,
+    },
+  })
+
+  if (integration?.integrationType === "whatsapp" && integration.accessTokenEncrypted) {
+    try {
+      const accessToken = decryptSecret(integration.accessTokenEncrypted)
+      await metaFetch<{ success?: boolean }>(`/${connection.wabaId}/subscribed_apps`, accessToken, {
+        method: "DELETE",
+      })
+    } catch (error) {
+      await logIntegrationEvent(userId, "whatsapp_meta_unsubscribe_failed", "Failed to unsubscribe app from WABA.", {
+        wabaId: connection.wabaId,
+        phoneNumberId: connection.phoneNumberId,
+        reason: error instanceof Error ? error.message : "unknown",
+      })
+    }
+  }
+
+  await db.whatsAppConnection.delete({
+    where: { id: connection.id },
+  })
+
+  const remaining = await db.whatsAppConnection.count({
+    where: {
+      userId,
+      metaIntegrationId: connection.metaIntegrationId,
+    },
+  })
+
+  if (remaining === 0) {
+    await db.metaIntegration.update({
+      where: { id: connection.metaIntegrationId },
+      data: {
+        status: "needs_reconnect",
+      },
+    })
+  }
+
+  await logIntegrationEvent(userId, "whatsapp_connection_disconnected", "WhatsApp number/WABA disconnected from ImportBoost.", {
+    connectionId: connection.id,
+    wabaId: connection.wabaId,
+    phoneNumberId: connection.phoneNumberId,
+    remainingConnections: remaining,
+  })
+
+  await logIntegrationEvent(userId, "whatsapp_connection_excluded", "WhatsApp connection excluded from future sync.", {
+    wabaId: connection.wabaId,
+    phoneNumberId: connection.phoneNumberId,
+    exclusionKey: makeWhatsAppConnectionKey(connection.wabaId, connection.phoneNumberId),
+  })
+}
+
+function normalizeWhatsAppRecipient(rawTo: string) {
+  const digits = rawTo.replace(/[^\d]/g, "")
+  if (digits.length < 8 || digits.length > 15) {
+    throw new Error("Invalid destination number. Use international format, e.g. 5491123456789.")
+  }
+  return digits
+}
+
+type SendWhatsAppTestMessageInput = {
+  userId: string
+  connectionId: string
+  to: string
+  mode: "text" | "template"
+  textBody?: string
+  templateName?: string
+  templateLanguageCode?: string
+}
+
+type SendWhatsAppTestMessageResult = {
+  messageId: string | null
+}
+
+export async function sendWhatsAppTestMessage(input: SendWhatsAppTestMessageInput): Promise<SendWhatsAppTestMessageResult> {
+  const connection = await db.whatsAppConnection.findFirst({
+    where: {
+      id: input.connectionId,
+      userId: input.userId,
+    },
+    include: {
+      metaIntegration: true,
+    },
+  })
+
+  if (!connection) {
+    throw new Error("Selected WhatsApp connection was not found.")
+  }
+
+  if (!connection.phoneNumberId) {
+    throw new Error("This connection does not have a phoneNumberId available for message sending.")
+  }
+
+  if (!connection.metaIntegration.accessTokenEncrypted) {
+    throw new Error("Missing Meta access token for this integration.")
+  }
+
+  const accessToken = decryptSecret(connection.metaIntegration.accessTokenEncrypted)
+  const to = normalizeWhatsAppRecipient(input.to)
+
+  let payload: Record<string, unknown>
+  if (input.mode === "template") {
+    if (!input.templateName || !input.templateName.trim()) {
+      throw new Error("Template mode requires template name.")
+    }
+    payload = {
+      messaging_product: "whatsapp",
+      to,
+      type: "template",
+      template: {
+        name: input.templateName.trim(),
+        language: {
+          code: (input.templateLanguageCode || "es_AR").trim(),
+        },
+      },
+    }
+  } else {
+    if (!input.textBody || input.textBody.trim().length === 0) {
+      throw new Error("Text mode requires message body.")
+    }
+    payload = {
+      messaging_product: "whatsapp",
+      to,
+      type: "text",
+      text: {
+        preview_url: false,
+        body: input.textBody.trim(),
+      },
+    }
+  }
+
+  try {
+    const result = await metaFetch<{ messages?: Array<{ id?: string }> }>(`/${connection.phoneNumberId}/messages`, accessToken, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    })
+
+    const messageId = result.messages?.[0]?.id ?? null
+    await logIntegrationEvent(input.userId, "whatsapp_test_message_sent", "WhatsApp test message sent.", {
+      connectionId: connection.id,
+      wabaId: connection.wabaId,
+      phoneNumberId: connection.phoneNumberId,
+      mode: input.mode,
+      to,
+      messageId,
+      templateName: input.mode === "template" ? input.templateName ?? null : null,
+    })
+
+    return { messageId }
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : "Unknown send-test error"
+    await logIntegrationEvent(input.userId, "whatsapp_test_message_failed", "WhatsApp test message failed.", {
+      connectionId: connection.id,
+      wabaId: connection.wabaId,
+      phoneNumberId: connection.phoneNumberId,
+      mode: input.mode,
+      to,
+      reason,
+      templateName: input.mode === "template" ? input.templateName ?? null : null,
+    })
+    throw error
+  }
 }
 
 export async function logIntegrationEvent(

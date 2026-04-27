@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import {
+  clearExcludedWhatsAppConnections,
   consumeOAuthState,
   syncInstagramIntegration,
   syncWhatsAppIntegration,
@@ -41,6 +42,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (stateRecord.integrationType === "whatsapp") {
+      await clearExcludedWhatsAppConnections(stateRecord.userId)
       await syncWhatsAppIntegration(stateRecord.userId)
     } else {
       await syncInstagramIntegration(stateRecord.userId)
@@ -55,7 +57,8 @@ export async function GET(request: NextRequest) {
 
     const missingBusinessManagement =
       (error instanceof MetaApiError && error.code === 200 && message.includes("business_management")) ||
-      message.includes("Requires business_management permission")
+      message.includes("Requires business_management permission") ||
+      message.includes("Meta denied business assets access despite granted scope")
 
     dashboardUrl.searchParams.set("status", missingBusinessManagement ? "missing_permissions" : "sync_failed")
     return NextResponse.redirect(dashboardUrl)

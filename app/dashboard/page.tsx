@@ -19,6 +19,22 @@ function resolveDisplayStatus(status: IntegrationStatus, expiresAt: Date | null)
   return status
 }
 
+function formatEventDetails(metadata: unknown) {
+  if (!metadata || typeof metadata !== "object") return null
+  const object = metadata as Record<string, unknown>
+  const granted = Array.isArray(object.grantedScopes) ? object.grantedScopes.filter((scope): scope is string => typeof scope === "string") : []
+  const missing = Array.isArray(object.missingRequiredScopes)
+    ? object.missingRequiredScopes.filter((scope): scope is string => typeof scope === "string")
+    : []
+
+  if (granted.length === 0 && missing.length === 0) return null
+
+  return {
+    granted,
+    missing,
+  }
+}
+
 function hasActiveIntegration(integration: { status: IntegrationStatus; accessTokenEncrypted: string | null } | null) {
   if (!integration) return false
   return integration.status !== "disconnected" && Boolean(integration.accessTokenEncrypted)
@@ -132,12 +148,21 @@ export default async function DashboardPage() {
             {recentEvents.length === 0 ? (
               <li>No hay eventos todavía.</li>
             ) : (
-              recentEvents.map((event) => (
-                <li key={event.id} className="rounded-xl border border-border/70 bg-background px-3 py-2">
-                  <p className="font-medium text-foreground/90">{event.message}</p>
-                  <p className="text-xs">{event.createdAt.toLocaleString("es-AR")}</p>
-                </li>
-              ))
+              recentEvents.map((event) => {
+                const details = formatEventDetails(event.metadataJson)
+                return (
+                  <li key={event.id} className="rounded-xl border border-border/70 bg-background px-3 py-2">
+                    <p className="font-medium text-foreground/90">{event.message}</p>
+                    {details ? (
+                      <div className="mt-1 text-xs">
+                        {details.granted.length ? <p>Scopes concedidos: {details.granted.join(", ")}</p> : null}
+                        {details.missing.length ? <p className="text-amber-700">Scopes faltantes: {details.missing.join(", ")}</p> : null}
+                      </div>
+                    ) : null}
+                    <p className="text-xs">{event.createdAt.toLocaleString("es-AR")}</p>
+                  </li>
+                )
+              })
             )}
           </ul>
         </article>
