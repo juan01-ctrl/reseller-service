@@ -22,8 +22,8 @@ export function Footer() {
               ImportBoost
             </div>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              IA de ventas para importadores de electrónica premium en Argentina. Respondé
-              WhatsApp, Instagram y tu web en menos de un minuto — con tu catálogo y tu tono.
+              Sistema de ventas para importadores de electrónica en Argentina. Respondé WhatsApp,
+              Instagram y web con tu catálogo, tu criterio y control total.
             </p>
           </div>
 
@@ -136,7 +136,7 @@ export function Footer() {
           </div>
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground md:flex-row">
             <p>© 2026 ImportBoost. Todos los derechos reservados.</p>
-            <p>Hecho para el importador argentino que vende por Instagram y WhatsApp.</p>
+            <p>Hecho para el vendedor argentino que no quiere perder consultas por demora.</p>
           </div>
         </div>
       </div>

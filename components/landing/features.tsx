@@ -15,32 +15,32 @@ const features: Array<{
   {
     icon: Clock,
     title: "Respuesta en < 1 min",
-    body: "Mientras estás manejando, en reuniones o durmiendo, el asistente responde consultas con precio, stock y cuotas.",
+    body: "No perdés consultas por demora: respondé con precio, stock y cuotas en menos de un minuto.",
     wide: true,
     shader: "pulse",
   },
   {
     icon: MessageCircle,
     title: "WhatsApp Business",
-    body: "Cotiza, reserva y pasa datos de transferencia. Te deriva cuando hace falta criterio humano.",
+    body: "Cotizá, reservá y pasá datos de pago más rápido. Si la charla requiere criterio comercial, te deriva.",
     shader: "waves",
   },
   {
     icon: Instagram,
     title: "Instagram DM",
-    body: "Mismo tono que en WhatsApp. Responde historias, menciones y DMs que llegan por comentarios.",
+    body: "Mantené el mismo criterio de venta que en WhatsApp. Atendé DMs, historias y menciones sin colgar.",
     shader: "grain",
   },
   {
     icon: Globe,
     title: "Web con catálogo claro",
-    body: "Precios, cuotas y stock visibles. La confianza que falta para cerrar una transferencia grande a un desconocido.",
+    body: "Mostrá precios, cuotas y stock claros para reducir dudas y cerrar transferencias con más confianza.",
     shader: "perlin",
   },
   {
     icon: Brain,
     title: "Tu criterio comercial",
-    body: "La IA aprende cómo cotizás, cuándo hacés cuotas, qué bancos aceptás. No inventa — pregunta.",
+    body: "Entiende lo que preguntan, detecta intención de compra y prioriza conversaciones clave. Nunca responde fuera de lo configurado.",
     shader: "neuro",
   },
 ]
@@ -57,13 +57,12 @@ export function Features() {
             as="h2"
             className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[44px]"
           >
-            Una sola IA, tus tres canales, tu criterio comercial.
+            Tus tres canales, un solo criterio de venta.
           </SplitHeading>
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
-              Conectamos tu catálogo a WhatsApp, Instagram y a una web profesional. El asistente
-              conoce stock, cuotas, formas de pago y cómo vendés vos. Responde como vos — solo que
-              24/7.
+              Tu catálogo queda conectado a WhatsApp, Instagram y web. Respondé más rápido, con
+              consistencia y control: podés intervenir cuando quieras.
             </p>
           </Reveal>
         </div>

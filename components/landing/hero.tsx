@@ -30,9 +30,9 @@ export function Hero() {
             accentSelector="[data-heading-accent]"
             className="mt-6 text-balance text-[42px] font-semibold leading-[1.05] tracking-tight text-foreground md:text-[64px]"
           >
-            La IA que te cierra ventas{" "}
+            Respondé más rápido y{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-primary">mientras dormís.</span>
+              <span className="relative z-10 text-primary">cerrá más consultas.</span>
               <span
                 aria-hidden
                 data-heading-accent
@@ -43,7 +43,8 @@ export function Hero() {
 
           <Reveal delay={0.3} duration={0.7}>
             <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-              Automatizá WhatsApp e Instagram + web con catálogo: respondé al instante y cerrá antes.
+              Respondé WhatsApp e Instagram en segundos, con precios y stock claros. Vos tenés el
+              control en todo momento.
             </p>
           </Reveal>
 

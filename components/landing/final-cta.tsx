@@ -21,12 +21,12 @@ export function FinalCTA() {
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
               Si vendés menos de 5 equipos al mes, si no usás WhatsApp o Instagram como canal de
-              venta, o si preferís responder cada consulta a mano, probablemente no vamos a ser una
+              venta, o si preferís responder cada consulta a mano, probablemente no sea una
               buena inversión.
             </p>
             <p className="mt-3 text-base font-medium text-foreground md:text-lg">
-              Si cerrás 10+ equipos al mes y la mayoría de tus leads arranca por DM, estás dejando
-              plata en la mesa todos los días.
+              Si cerrás 10+ equipos al mes y la mayoría de tus leads arranca por DM, responder más
+              rápido te puede devolver ventas que hoy se te escapan.
             </p>
           </Reveal>
         </div>
@@ -47,7 +47,7 @@ export function FinalCTA() {
                 stagger={0.06}
                 className="text-balance text-3xl font-semibold leading-tight tracking-tight md:text-[40px]"
               >
-                Mañana llega una consulta a las 3 AM. ¿La vas a perder otra vez?
+                La próxima consulta importante, ¿la atendés vos o la perdés por demora?
               </SplitHeading>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Button asChild size="lg" className="h-12 rounded-full px-6 text-sm">

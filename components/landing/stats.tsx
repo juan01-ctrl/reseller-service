@@ -6,19 +6,19 @@ const stats = [
     kicker: "Implementación",
     value: "7 días",
     label: "De tu catálogo a producción",
-    detail: "Activación completa sin frenar operaciones.",
+    detail: "Salís en vivo sin frenar tu operación diaria.",
   },
   {
     kicker: "Velocidad",
     value: "< 1 min",
     label: "Tiempo de respuesta del asistente",
-    detail: "Consultas atendidas mientras vos vendés.",
+    detail: "Menos consultas colgadas, más chances de cierre.",
   },
   {
     kicker: "Garantía",
     value: "30 días",
     label: "Devolución completa del setup",
-    detail: "Sin letra chica, con soporte humano.",
+    detail: "Sin letra chica y con acompañamiento humano.",
   },
 ]
 
@@ -33,7 +33,7 @@ export function Stats() {
           as="h2"
           className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[40px]"
         >
-          Lo que sí podemos garantizar.
+          Resultados claros, sin promesas mágicas.
         </SplitHeading>
 
         <StaggerGroup

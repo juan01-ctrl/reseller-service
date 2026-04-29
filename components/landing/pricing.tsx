@@ -18,13 +18,13 @@ const discountPercent = Math.round((savings / setupBasePrice) * 100)
 const setupIncludes = [
   "Web profesional con catálogo claro",
   "Conexión WhatsApp + Instagram",
-  "IA entrenada con tus productos y cuotas",
+  "Respuestas configuradas con tus productos y cuotas",
   "Carga inicial de productos",
 ]
 
 const maintenanceIncludes = [
   "Hosting incluido",
-  "IA siempre activa",
+  "Atención activa en tus canales",
   "Soporte humano",
   "Cambios chicos incluidos",
   "Sin contrato anual",
@@ -35,7 +35,7 @@ const allIncludes = [...setupIncludes, ...maintenanceIncludes]
 const visibleIncludes = [
   "Web profesional con catálogo claro",
   "Conexión WhatsApp + Instagram",
-  "IA entrenada con tus productos y cuotas",
+  "Respuestas configuradas con tus productos y cuotas",
   "Hosting incluido",
   "Soporte humano",
   "Sin contrato anual",
@@ -56,11 +56,11 @@ export function Pricing() {
             as="h2"
             className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[44px]"
           >
-            Recuperá la inversión con más cierres, sin complejidad.
+            Que se pague con ventas recuperadas, no con más trabajo.
           </SplitHeading>
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
-              Un pago inicial para implementar y un mensual bajo para mantener todo activo.
+              Un pago inicial para implementarlo y un mensual bajo para mantenerlo funcionando.
             </p>
           </Reveal>
         </div>
@@ -71,7 +71,7 @@ export function Pricing() {
               <div className="max-w-xl">
                 <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">Plan ImportBoost</p>
                 <h3 className="mt-1 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                  Todo lo necesario para vender más, desde la primera semana.
+                  Todo lo necesario para responder mejor y vender más desde la primera semana.
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Precio promocional válido hasta finalizar el contador.
@@ -94,7 +94,7 @@ export function Pricing() {
                 <span className="text-4xl font-semibold tracking-tight text-foreground">USD {setupPrice}</span>
               </div>
               <p className="mt-1 text-sm text-muted-foreground">
-                Setup completo: Web Premium + automatización WhatsApp e Instagram
+                Setup completo: Web Premium + sistema de respuesta para WhatsApp e Instagram
               </p>
 
               <p className="mt-2 text-sm text-muted-foreground">
@@ -114,7 +114,9 @@ export function Pricing() {
                   <span className="text-2xl font-semibold tracking-tight text-foreground">USD {monthlyPrice}</span>
                   <span className="pb-0.5 text-sm text-muted-foreground">/mes</span>
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">Hosting, IA activa, soporte humano y cambios chicos.</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Hosting, atención activa, soporte humano y cambios chicos.
+                </p>
                 <p className="mt-1 text-xs text-muted-foreground">Sin contrato anual. Cancelás cuando quieras.</p>
               </div>
             </div>
@@ -164,10 +166,10 @@ export function Pricing() {
           <div className="h-full min-w-0 rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-7">
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">ROI</p>
             <p className="mt-2 text-lg font-medium text-foreground">
-              Con 1 cierre adicional, la inversión puede recuperarse en el primer mes.
+              Con 1 o 2 cierres que hoy se te enfrían, la inversión puede recuperarse en el primer mes.
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Con convertir una consulta que hoy se enfría, el retorno puede empezar rápido.
+              Si respondés más rápido y con mejor seguimiento, el retorno se vuelve visible enseguida.
             </p>
           </div>
           <div className="h-full min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-7">
@@ -176,9 +178,9 @@ export function Pricing() {
               Garantía de 30 días
             </p>
             <p className="mt-2 text-lg font-medium text-foreground">
-              Si el asistente no recupera cierres que antes se perdían, devolvemos el setup.
+              Si el sistema no recupera cierres que antes perdías por demora, devolvemos el setup.
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">Sin letra chica. Sin fricción.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Sin letra chica. Vos tenés el control.</p>
           </div>
         </StaggerGroup>
       </div>

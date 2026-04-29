@@ -10,11 +10,11 @@ import { Reveal } from "@/components/motion/reveal"
 const items = [
   {
     q: "¿El asistente cubre WhatsApp e Instagram?",
-    a: "Sí: WhatsApp Business API + DMs de Instagram + chat de tu web. Mismo criterio y tono en los tres.",
+    a: "Sí: WhatsApp Business API + DMs de Instagram + chat web. Mismo criterio comercial en los tres canales.",
   },
   {
     q: "¿Puedo cambiar precios o stock rápido?",
-    a: "Sí, desde un panel simple. O nos pasás los cambios y lo actualizamos el mismo día. Sabemos que los precios en importación cambian seguido — lo tenemos contemplado.",
+    a: "Sí, desde un panel simple. O nos pasás cambios y los actualizamos el mismo día. Está pensado para precios de importación que cambian seguido.",
   },
   {
     q: "¿Cuánto tarda en estar listo?",
@@ -26,11 +26,11 @@ const items = [
   },
   {
     q: "¿Puedo atender yo algunas consultas?",
-    a: "Obvio. La IA te pasa el chat cuando detecta que hace falta criterio humano — negociaciones, reclamos, casos raros. Vos decidís qué automatizar y qué no.",
+    a: "Obvio. Te pasa el chat cuando detecta que hace falta criterio humano (negociaciones, reclamos, casos especiales). Vos decidís qué se responde y qué no.",
   },
   {
     q: "¿Y si el asistente responde mal o inventa algo?",
-    a: "Todo chat queda registrado y te llegan alertas de respuestas con baja confianza. Las corregís una vez y aprende. Y nunca inventa precios ni stock: si no lo sabe, te deriva.",
+    a: "Todo chat queda registrado y podés intervenir cuando quieras. Nunca responde fuera de lo configurado: si falta información, te deriva.",
   },
 ]
 

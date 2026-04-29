@@ -16,7 +16,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Antes perdía 10 ventas al mes por no responder a tiempo. Ahora ImportBoost me contesta a las 3 AM y cierro mientras duermo. En el primer mes se pagó el setup dos veces.",
+      "Antes perdía 10 ventas al mes por responder tarde. Ahora las consultas se atienden al momento y en el primer mes se pagó el setup dos veces.",
     name: "Matías R.",
     role: "Nexo Tecno · Rosario",
     initials: "MR",
@@ -24,21 +24,21 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "La web quedó impecable y el chat responde mejor que yo cuando estoy cansado. Lo mejor: cuando hace falta criterio me pasa el chat sin quemar al cliente.",
+      "La web quedó impecable y el chat mantiene el mismo criterio todo el día. Lo mejor: cuando hace falta criterio me pasa la conversación sin fricción.",
     name: "Ezequiel B.",
     role: "MicroPoint Store · CABA",
     initials: "EB",
   },
   {
     quote:
-      "Tenía miedo de que la IA respondiera cualquier cosa. Nunca inventa: si no sabe, me deriva. Pasé de 30 consultas sin responder a 0.",
+      "Tenía miedo de respuestas erradas. Nunca responde fuera de lo configurado: si no tiene dato, me deriva. Pasé de 30 consultas sin responder a 0.",
     name: "Nicolás F.",
     role: "TecnoMarket Sur · Córdoba",
     initials: "NF",
   },
   {
     quote:
-      "Lo armamos en 7 días y ya en la primera semana tres clientes me reservaron equipos por Instagram de madrugada. Nunca lo hubiera atendido a esa hora.",
+      "Lo armamos en 7 días y en la primera semana tres clientes me reservaron equipos por Instagram fuera de horario. Antes esas ventas se me iban.",
     name: "Agustina V.",
     role: "House of Gadgets · Mendoza",
     initials: "AV",
@@ -64,7 +64,7 @@ export function Testimonials() {
           </SplitHeading>
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
-              Resellers reales, ciudades reales, ventas reales. Cero guiones.
+              Casos reales de vendedores que mejoraron respuesta, seguimiento y cierres.
             </p>
           </Reveal>
         </div>

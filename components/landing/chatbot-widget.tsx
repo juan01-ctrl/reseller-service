@@ -17,7 +17,7 @@ const QUICK_QUESTIONS = [
   "¿Cuánto sale?",
   "¿Qué incluye el setup?",
   "¿Cuánto tarda en estar listo?",
-  "¿Cubre WhatsApp e Instagram?",
+  "¿Cómo mantienen el control de respuestas?",
 ]
 
 const URL_REGEX = /(https?:\/\/[^\s)]+)/g
@@ -74,7 +74,7 @@ export function ChatbotWidget() {
     {
       id: "m-1",
       role: "assistant",
-      text: "Hola, soy el asistente de ImportBoost. Te puedo ayudar con precios, implementacion, canales (WhatsApp/Instagram), garantia y dudas de negocio.",
+      text: "Hola, soy el asistente de ImportBoost. Te ayudo con precios, implementación, tiempos, canales y cómo mantenés control de las respuestas.",
     },
   ])
 

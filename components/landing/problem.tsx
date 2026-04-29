@@ -16,7 +16,7 @@ const cards: Array<{
   {
     icon: Clock3,
     title: "Consulta sin responder",
-    body: "\u201C¿Tenés PS5 Slim en stock?\u201D — 02:14 AM, sábado. Se leyó a las 11 de la mañana. Para entonces el cliente ya cotizó en otros tres lugares.",
+    body: "\u201C¿Tenés PS5 Slim en stock?\u201D — 02:14 AM, sábado. Lo viste 11:00. Cuando respondiste, ya compró en otro lado.",
     tag: "leído hace 3 h",
     muted: true,
     shader: "smoke",
@@ -24,14 +24,14 @@ const cards: Array<{
   {
     icon: Repeat2,
     title: "La misma pregunta, 40 veces al día",
-    body: "\u201C¿Cuánto el iPhone 16?\u201D · \u201C¿Tenés Switch OLED?\u201D · \u201C¿Hay S24 Ultra?\u201D · \u201C¿Mandás a Mendoza?\u201D El tiempo ahí es el que no le dedicás a los cierres que importan.",
+    body: "\u201C¿Cuánto el iPhone 16?\u201D · \u201C¿Tenés Switch OLED?\u201D · \u201C¿Hay S24 Ultra?\u201D · \u201C¿Mandás a Mendoza?\u201D Contestás lo mismo todo el día y llegás tarde a los leads calientes.",
     tag: "40+ iguales hoy",
     shader: "orbit",
   },
   {
     icon: ShieldQuestion,
     title: "Confianza que no termina de cerrar",
-    body: "Van a transferirte USD 1.200 a un desconocido. Sin una web seria con precio, stock y condiciones claras, muchos se caen en el último paso.",
+    body: "Te van a transferir USD 1.200 a una persona que no conocen. Si no ven precio, stock y condiciones claras, dudan y se enfría la venta.",
     tag: "carrito abandonado",
     shader: "dither",
   },
@@ -49,11 +49,11 @@ export function Problem() {
             as="h2"
             className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[44px]"
           >
-            La consulta llegó. Vos estabas manejando. El cliente, no esperó.
+            La consulta llegó. Te demoraste. La venta se fue.
           </SplitHeading>
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
-              Si respondés en minutos, cerrás. Si respondés en horas, la venta ya está en otro Instagram.
+              Si respondés rápido, vendés. Si tardás, ese cliente le compra a otro por WhatsApp o Instagram.
             </p>
           </Reveal>
         </div>

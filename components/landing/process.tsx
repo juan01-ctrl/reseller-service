@@ -7,19 +7,19 @@ const steps = [
     num: "01",
     day: "Día 1-2",
     title: "Conocemos tu negocio",
-    body: "Nos pasás tu catálogo (o lo armamos desde tu Instagram). 30 min de llamada: tono, cuotas, bancos, envíos, criterio comercial.",
+    body: "Nos pasás tu catálogo (o lo armamos desde tu Instagram). En 30 min dejamos definidos precios, cuotas, envíos y reglas de respuesta.",
   },
   {
     num: "02",
     day: "Día 3-5",
     title: "Construimos",
-    body: "Web + conexión WhatsApp Business + Instagram + IA entrenada con tu catálogo. Probamos respuestas juntos.",
+    body: "Dejamos todo conectado: web, WhatsApp e Instagram. Probamos casos reales con vos para que responda como corresponde.",
   },
   {
     num: "03",
     day: "Día 6-7",
     title: "Ajustes y launch",
-    body: "Afinamos con tus FAQs reales. Empieza a vender — con la tranquilidad de saber que responde como vos.",
+    body: "Ajustamos con tus consultas frecuentes y activamos. Empezás a responder más rápido sin perder control.",
   },
 ]
 
@@ -35,11 +35,11 @@ export function Process() {
             as="h2"
             className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[44px]"
           >
-            De tu catálogo a ventas automáticas en 7 días.
+            En 7 días, convertís más consultas en oportunidades reales de venta.
           </SplitHeading>
           <Reveal delay={0.25} duration={0.7}>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
-              Sin reuniones de dos horas. Sin demos interminables. Así arrancamos:
+              Implementación simple, guiada y sin vueltas. Así arrancamos:
             </p>
           </Reveal>
         </div>
