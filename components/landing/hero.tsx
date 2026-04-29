@@ -1,3 +1,5 @@
+ "use client"
+
 import { ArrowRight, Clock, HeartHandshake } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ChatMock } from "@/components/landing/chat-mock"
@@ -88,6 +90,8 @@ export function Hero() {
             className="absolute -inset-x-10 -inset-y-8 -z-10 rounded-[2rem] bg-gradient-to-b from-primary/10 via-transparent to-transparent blur-2xl"
           />
           <ChatMock
+            realtime
+            startOnView
             messages={[
               { from: "them", text: "Hola, ¿tenés PS5 Slim con lectora en stock?", time: "23:47" },
               {
@@ -102,15 +106,19 @@ export function Hero() {
                 time: "23:48",
               },
             ]}
-            footer={
+            footer={({ completed }) => (
               <div className="flex items-center justify-between text-xs">
-                <span className="flex items-center gap-2 text-muted-foreground">
+                <span
+                  className={`flex items-center gap-2 text-muted-foreground transition-all duration-500 ${
+                    completed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                  }`}
+                >
                   <span className="inline-block h-2 w-2 rounded-full bg-primary" />
                   Reserva confirmada
                 </span>
                 <span className="font-mono text-muted-foreground">Total: 47 segundos</span>
               </div>
-            }
+            )}
           />
         </Reveal>
 
